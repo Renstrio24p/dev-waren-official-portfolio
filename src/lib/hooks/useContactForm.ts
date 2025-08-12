@@ -1,14 +1,6 @@
-// hooks/useContactForm.ts
-import { z } from 'zod';
 import { useSubmitForm } from '@/lib/hooks';
 import { contactStore } from '@/store';
-
-const contactSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    email: z.string().email("Invalid email address"),
-    subject: z.string().optional(),
-    message: z.string().min(10, "Message must be at least 10 characters"),
-});
+import { contactSchema } from '../validators';
 
 export function useContactForm() {
     const { onSubmit } = useSubmitForm();
@@ -33,7 +25,7 @@ export function useContactForm() {
 
         if (!validation.success) {
             contactStore.getState().setError(
-                validation.error.issues.map(e => e.message).join('\n')
+                validation.error.issues.map(e => `<div class="mb-1">${e.message}</div>`).join('')
             );
             return;
         }

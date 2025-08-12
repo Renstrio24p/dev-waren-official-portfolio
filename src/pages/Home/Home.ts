@@ -36,8 +36,6 @@ const Home = (DOM: HTMLElement, websiteName: string) => {
 
     useTSEventAll("#send", "submit", () => handleSubmit);
 
-
-
     // Subscribe to error changes
     contactStore.subscribe((state) => {
         errorEl!.textContent = state.error;

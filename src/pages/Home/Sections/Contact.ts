@@ -4,8 +4,6 @@ import { html, useTSElements } from '@devwareng/vanilla-ts';
 
 export default function Contact(DOM: HTMLElement) {
 
-
-
     const ui = useTSElements(
         DOM,
         html`
@@ -55,8 +53,6 @@ export default function Contact(DOM: HTMLElement) {
         `
 
     );
-
-
 
     return ui;
 }

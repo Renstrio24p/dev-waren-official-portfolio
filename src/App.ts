@@ -14,9 +14,9 @@ export default function Start(DOM?: HTMLElement) {
     createIcons({ icons });
 
     useTSMetaData({
-        name: 'Start',
-        description: '',
-        author: ''
+        name: 'Dev Waren Portfolio',
+        description: 'This is My Official Portfolio Website',
+        author: 'Waren Gador'
     });
 
     const title = 'Dev Waren'
