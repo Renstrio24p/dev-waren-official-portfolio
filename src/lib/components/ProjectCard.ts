@@ -10,14 +10,17 @@ type Project = {
     fullStack: boolean
 }
 
-export default function ProjectCard(DOM: HTMLElement, project: Partial<Project>, dataId: number) {
-
-
+export default function ProjectCard(
+    DOM: HTMLElement,
+    project: Partial<Project>,
+    dataId: number
+) {
+    const safeTitleId = project.title?.replace(/\s+/g, "-").toLowerCase() ?? `card-${dataId}`;
 
     const ui = useTSElements(
         DOM,
         html`
-        <div class="group relative overflow-hidden shadow-lg" id="card-${dataId}">
+        <a class="group relative overflow-hidden shadow-lg" id="card-${dataId}" href=${project.url}>
             <img src=${project.image} alt=${project.title}
                 class="w-full h-auto transition-transform duration-500 group-hover:scale-110" />
         
@@ -32,18 +35,15 @@ export default function ProjectCard(DOM: HTMLElement, project: Partial<Project>,
                     ${project.desc}
                 </p>
                 <div class="flex flex-wrap gap-2 justify-center animate__animated animate__fadeInUp animate__delay-600ms"
-                    id="${project.title}>
-                                                                                                                    ${project.stacks?.map((stack) => html`
-                                                                                                                    <span class=" bg-white text-black text-xs px-2 py-1 rounded">
-                    ${stack}</span>
+                    id=${safeTitleId}>
+                    ${project.stacks?.map((stack) => html`
+                    <span class="bg-white text-black text-xs px-2 py-1 rounded">${stack}</span>
                     `).join('')}
                 </div>
             </div>
-        </div>
+        </a>
         `
     );
-
-
 
     return ui;
 }
