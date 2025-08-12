@@ -30,10 +30,9 @@ const Home = (DOM: HTMLElement, websiteName: string) => {
         console.log('submit');
     });
 
-    const form = useTSSelect<HTMLFormElement>('#send');
     const errorEl = useTSSelect<HTMLElement>('#form-error');
 
-    form?.addEventListener('submit', handleSubmit);
+    useTSEventAll("#send", "submit", () => handleSubmit);
 
     // Subscribe to error changes
     contactStore.subscribe((state) => {
