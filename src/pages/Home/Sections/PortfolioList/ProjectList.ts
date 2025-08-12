@@ -2,7 +2,7 @@ import ProjectCard from '@/lib/components/ProjectCard';
 import { projects } from '@/lib/constants/projects';
 import { html, useTSElements, useTSEventAll } from '@devwareng/vanilla-ts'
 
-export default function ProjectList(DOM: HTMLElement) {
+export default function ProjectList(DOM: HTMLElement, dataId: number) {
     const ui = useTSElements(
         DOM,
         html`
@@ -24,7 +24,7 @@ export default function ProjectList(DOM: HTMLElement) {
         
         </div>
         <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-16">
-            ${projects.map((project) => ProjectCard(DOM, project)).join('')}
+            ${projects?.map((project) => ProjectCard(DOM, project, dataId)).join('')}
         </div>
     `
     );
@@ -33,7 +33,13 @@ export default function ProjectList(DOM: HTMLElement) {
         console.log('all');
     });
 
+    const data = () => {
+        useTSEventAll(`#card-${dataId}`, 'click', () => {
+            console.log('fullstack');
+        });
+    }
 
+    data()
 
-    return ui;
+    return ui
 }

@@ -1,9 +1,18 @@
+type Project = {
+    title: string,
+    image: string,
+    stacks: string[],
+    url: `https://${string}`,
+    desc: string,
+    fullStack: boolean
+}
 
-const projects = [
+const projects: Partial<Project>[] = [
     {
         title: "Magic 89.9 FM Radio Official Website",
         image: "magicsite.png",
         stacks: ["React", "Typescript", "Tailwindcss", "Express", "MongoDB"],
+        url: "https://magic899.com",
         desc: "This is an Official Website for Magic 89.9 FM Radio one of the most popular radio station in the Philippines.",
         fullStack: true
     },
@@ -11,6 +20,7 @@ const projects = [
         title: "Cara E-commerce Website",
         image: "cara.png",
         stacks: ["Typescript", "Tailwindcss"],
+        url: "https://cara-ecommerce.vercel.app/",
         desc: "Cara E-commerce Website Designed for Frontend Only",
         fullStack: false
     },
@@ -25,6 +35,7 @@ const projects = [
         title: "Tvflix Movie Website",
         image: "tvflix.png",
         stacks: ["Typescript", "Tailwindcss", "TMDB API", "Express"],
+        url: "https://movie-app-mtdb.vercel.app/",
         desc: "Tvflix Movie Website Designed for Api browsing Only",
         fullStack: false
     },

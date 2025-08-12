@@ -1,11 +1,13 @@
 // Home.ts
 import { html, useTSElements, useTSEvent, useTSEventAll, useTSSelect } from "@devwareng/vanilla-ts";
 import { AboutMe, Contact, Hero, Introduction, Portfolio } from "./Sections";
-import { useContactForm } from "@/lib/hooks";
+import { useContactForm, useUniqueId } from "@/lib/hooks";
 import { contactStore } from "@/store";
 
 const Home = (DOM: HTMLElement, websiteName: string) => {
     document.title = websiteName;
+
+    const { dataId } = useUniqueId();
 
     const { handleSubmit } = useContactForm();
 
@@ -17,7 +19,7 @@ const Home = (DOM: HTMLElement, websiteName: string) => {
             ${Hero(DOM)}
             ${Introduction(DOM)}
             ${AboutMe(DOM)}
-            ${Portfolio(DOM)}
+            ${Portfolio(DOM, dataId)}
             ${Contact(DOM)}
         </div>
         `
@@ -33,6 +35,8 @@ const Home = (DOM: HTMLElement, websiteName: string) => {
     const errorEl = useTSSelect<HTMLElement>('#form-error');
 
     useTSEventAll("#send", "submit", () => handleSubmit);
+
+
 
     // Subscribe to error changes
     contactStore.subscribe((state) => {

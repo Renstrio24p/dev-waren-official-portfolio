@@ -3,7 +3,7 @@ import { Header, Pillar } from '@/lib/components';
 import { html, useTSElements } from '@devwareng/vanilla-ts'
 import { ProjectList } from './PortfolioList';
 
-export default function Portfolio(DOM: HTMLElement) {
+export default function Portfolio(DOM: HTMLElement, dataId: number) {
     const ui = useTSElements(
         DOM,
         html`
@@ -26,7 +26,7 @@ export default function Portfolio(DOM: HTMLElement) {
                     ${Pillar(DOM, "bg-white")}
                 </div>
                 <div class="overflow-hidden">
-                    ${ProjectList(DOM)}
+                    ${ProjectList(DOM, dataId)}
                 </div>
             </div>
         </section>
