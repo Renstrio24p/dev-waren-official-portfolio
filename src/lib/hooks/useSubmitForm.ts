@@ -1,4 +1,3 @@
-import { sendContactEmail } from "../services/mailtrap.services";
 
 export interface ContactFormValues {
     name: string;
@@ -8,9 +7,8 @@ export interface ContactFormValues {
 }
 
 const useSubmitForm = () => {
-    const onSubmit = async (values: ContactFormValues) => {
+    const onSubmit = async (_values: ContactFormValues) => {
         try {
-            await sendContactEmail(values, values.email);
             console.log("Form submitted successfully");
         } catch (error) {
             console.error("Contact form submission error:", error);
