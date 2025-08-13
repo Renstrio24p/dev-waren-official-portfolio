@@ -1,6 +1,7 @@
+import 'animate.css';
 import { Header, Stacks } from '@/lib/components';
 import { useFilterTechStacks } from '@/lib/hooks';
-import { html, useTSElements } from '@devwareng/vanilla-ts';
+import { html, useTSElements } from '@devwareng/vanilla-ts'
 
 export default function Skills(DOM: HTMLElement) {
     const { filteredTechstacks, backendTechstacks, languages } = useFilterTechStacks();
@@ -8,12 +9,11 @@ export default function Skills(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section id="skills" class="w-full flex flex-col relative overflow-hidden">
-        
+        <section class="w-full flex flex-col relative animate__animated animate__fadeInUp animate__slow overflow-hidden"
+            id="skills">
             <div class="w-full flex items-center justify-center">
                 ${Header(DOM, "Skills")}
             </div>
-        
             <div class="py-16 w-full">
                 <p class="tracking-widest font-semibold text-left uppercase text-lg md:text-xl lg:text-2xl">
                     I'm using the following tools:
