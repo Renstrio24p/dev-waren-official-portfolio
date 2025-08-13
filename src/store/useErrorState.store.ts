@@ -1,12 +1,21 @@
 // store/contactStore.ts
 import { createStore } from 'zustand/vanilla';
 
+type ContactErrors = {
+    name?: string;
+    email?: string;
+    subject?: string;
+    message?: string;
+};
+
 type ContactState = {
-    error: string;
-    setError: (message: string) => void;
+    errors: ContactErrors;
+    setError: (errors: ContactErrors) => void;
+    clearErrors: () => void;
 };
 
 export const contactStore = createStore<ContactState>((set) => ({
-    error: "",
-    setError: (message) => set({ error: message }),
+    errors: {},
+    setError: (errors) => set({ errors }),
+    clearErrors: () => set({ errors: {} }),
 }));

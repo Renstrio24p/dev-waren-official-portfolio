@@ -2,8 +2,26 @@ import { useSubmitForm } from '@/lib/hooks';
 import { contactStore } from '@/store';
 import { contactSchema } from '../validators';
 
-export function useContactForm() {
+type ContactErrors = {
+    name?: string;
+    email?: string;
+    subject?: string;
+    message?: string;
+};
+
+type Contacts = {
+    name: string;
+    email: string;
+    subject?: string;
+    message: string;
+}
+
+
+
+export function useContactForm(DOM: HTMLElement) {
     const { onSubmit } = useSubmitForm();
+    let errors = contactStore.getState().errors;
+
 
     const handleSubmit = async (event: Event) => {
         event.preventDefault();
@@ -11,7 +29,6 @@ export function useContactForm() {
         const form = event.currentTarget as HTMLFormElement;
         const formData = new FormData(form);
 
-        // Only load in browser
         const { default: xss } = await import('xss');
 
         const values = {
@@ -24,15 +41,43 @@ export function useContactForm() {
         const validation = contactSchema.safeParse(values);
 
         if (!validation.success) {
-            contactStore.getState().setError(
-                validation.error.issues.map(e => e.message).join('\n\n')
-            );
+            const fieldErrors: ContactErrors = {};
+            validation.error.issues.forEach(issue => {
+                const field = issue.path[0] as keyof ContactErrors;
+                fieldErrors[field] = issue.message;
+            });
+
+            contactStore.getState().setError(fieldErrors as Contacts);
             return;
+        } else {
+
         }
 
-        contactStore.getState().setError("");
+        // clear errors if valid
+        contactStore.getState().setError({
+            name: '',
+            email: '',
+            subject: '',
+            message: '',
+        } as Contacts);
         onSubmit(values);
+        form.reset();
     };
 
-    return { handleSubmit };
+    const requestAnimation = () => {
+        requestAnimationFrame(() => {
+            contactStore.subscribe((state) => {
+                errors = state.errors;
+
+                Object.keys(errors).forEach((field) => {
+                    const el = DOM.querySelector(`[data-error-field="${field}"]`) as HTMLElement | null;
+                    if (el) {
+                        el.textContent = errors![field as keyof typeof errors] || '';
+                    }
+                });
+            });
+        });
+    }
+
+    return { errors, handleSubmit, requestAnimation };
 }

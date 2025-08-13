@@ -1,44 +1,26 @@
 // Home.ts
-import { html, useTSElements, useTSEventAll, useTSSelect } from "@devwareng/vanilla-ts";
-import { AboutMe, Contact, Hero, Introduction, Portfolio } from "./Sections";
-import { useContactForm, useUniqueId } from "@/lib/hooks";
-import { contactStore } from "@/store";
+import { html, useTSElements } from "@devwareng/vanilla-ts";
+import { useComponents } from "@/lib/hooks";
 
 const Home = (DOM: HTMLElement, websiteName: string) => {
     document.title = websiteName;
-
-    const { dataId } = useUniqueId();
-
-    const { handleSubmit } = useContactForm();
 
     // Render all sections including Navbar
     const ui = useTSElements(
         DOM,
         html`
         <div class="relative min-h-screen flex flex-col overflow-hidden">
-            ${Hero(DOM)}
-            ${Introduction(DOM)}
-            ${AboutMe(DOM)}
-            ${Portfolio(DOM, dataId)}
-            ${Contact(DOM)}
+            <div id="hero-section"></div>
+            <div id="introduction-section"></div>
+            <div id="about-me-section"></div>
+            <div id="portfolio-section"></div>
+            <div id="contact-form"></div>
         </div>
         `
     );
 
-    useTSEventAll("#send", "click", (e) => {
-        e.preventDefault();
-        handleSubmit(e);
-        console.log('submit');
-    });
+    useComponents(DOM);
 
-    const errorEl = useTSSelect<HTMLElement>('#form-error');
-
-    useTSEventAll("#send", "submit", () => handleSubmit);
-
-    // Subscribe to error changes
-    contactStore.subscribe((state) => {
-        errorEl!.textContent = state.error;
-    });
 
     return ui;
 };

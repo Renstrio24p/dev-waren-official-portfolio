@@ -1,18 +1,19 @@
 import 'animate.css';
 import { Header, Pillar } from '@/lib/components';
-import { html, useTSElements } from '@devwareng/vanilla-ts';
+import { html, useTSElements, useTSEventAll } from '@devwareng/vanilla-ts';
+import { useContactForm } from '@/lib/hooks';
 
 export default function Contact(DOM: HTMLElement) {
+
+    const { errors, handleSubmit, requestAnimation } = useContactForm(DOM);
 
     const ui = useTSElements(
         DOM,
         html`
-        <section id="contact" class="relative min-h-screen animate__animated animate__fadeInUp animate__slow">
-            <!-- Background Layers -->
+        <section id="contact" class="relative min-h-screen animate__animated animate__fadeInUp animate__slow py-32">
             <div class="absolute bg-[url('/bg.jpg')] bg-fixed bg-center bg-cover w-full z-[-1] h-screen"></div>
             <div class="absolute bg-gray-50/97 bg-center bg-cover w-full z-[-1] h-screen"></div>
         
-            <!-- Content -->
             <div class="max-w-screen-2xl mx-auto py-16 flex flex-col gap-8 items-center">
                 ${Header(DOM, "Contact")}
         
@@ -22,19 +23,30 @@ export default function Contact(DOM: HTMLElement) {
         
                 ${Pillar(DOM)}
         
-                <!-- Contact Form -->
-                <form class="grid gap-2 w-full md:w-1/2 animate__animated animate__fadeInUp animate__delay-1s px-4" id="send">
-                    <input type="text" name="fullname" placeholder="Name"
-                        class="px-4 py-2 border-b-1 border-gray-600 outline-none focus:border-3" />
+                <form class="grid gap-4 w-full md:w-1/2 animate__animated animate__fadeInUp animate__delay-1s px-4" id="send">
+                    <div>
+                        <input type="text" name="fullname" placeholder="Name"
+                            class="px-4 py-2 border-b border-gray-600 outline-none focus:border-3 w-full" />
+                        <p class="text-red-500 text-sm mt-1" data-error-field="name">${errors?.name || ''}</p>
+                    </div>
         
-                    <input type="email" name="email" placeholder="Email"
-                        class="px-4 py-2 border-b-1 border-gray-600 outline-none focus:border-3" />
+                    <div>
+                        <input type="email" name="email" placeholder="Email"
+                            class="px-4 py-2 border-b border-gray-600 outline-none focus:border-3 w-full" />
+                        <p class="text-red-500 text-sm mt-1" data-error-field="email">${errors?.email || ''}</p>
+                    </div>
         
-                    <input type="text" name="subject" placeholder="Subject"
-                        class="px-4 py-2 border-b-1 border-gray-600 outline-none focus:border-3" />
+                    <div>
+                        <input type="text" name="subject" placeholder="Subject"
+                            class="px-4 py-2 border-b border-gray-600 outline-none focus:border-3 w-full" />
+                        <p class="text-red-500 text-sm mt-1" data-error-field="subject">${errors?.subject || ''}</p>
+                    </div>
         
-                    <textarea name="message" placeholder="Message"
-                        class="px-4 py-2 border-b border-gray-600 resize-none h-[300px] outline-none focus:border-3"></textarea>
+                    <div>
+                        <textarea name="message" placeholder="Message"
+                            class="px-4 py-2 border-b border-gray-600 resize-none h-[300px] outline-none focus:border-3 w-full"></textarea>
+                        <p class="text-red-500 text-sm mt-1" data-error-field="message">${errors?.message || ''}</p>
+                    </div>
         
                     <div class="w-full flex justify-center py-8">
                         <button type="submit"
@@ -44,15 +56,18 @@ export default function Contact(DOM: HTMLElement) {
                     </div>
                 </form>
         
-                <p id="form-error" class="text-red-500 animate__animated animate__fadeInUp animate__delay-1s"></p>
-        
-        
                 ${Pillar(DOM)}
             </div>
         </section>
         `
-
     );
+
+
+    requestAnimation();
+    useTSEventAll("#send", "submit", (e) => handleSubmit(e));
+
+
+
 
     return ui;
 }
