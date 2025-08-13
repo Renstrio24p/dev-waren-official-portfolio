@@ -1,3 +1,4 @@
+export { useSidebarToggle } from './useSidebarToggle';
 export { useScrollNavbar } from './useScrollbar';
 export { useCounter } from "./useCounter";
 export { useFilterTechStacks } from "./useFilterTechStacks";
