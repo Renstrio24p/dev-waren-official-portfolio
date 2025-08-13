@@ -25,7 +25,7 @@ export function useContactForm() {
 
         if (!validation.success) {
             contactStore.getState().setError(
-                validation.error.issues.map(e => `<div class="mb-1">${e.message}</div>`).join('')
+                validation.error.issues.map(e => e.message).join('\n\n')
             );
             return;
         }

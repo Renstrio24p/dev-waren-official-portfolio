@@ -1,5 +1,5 @@
 // Home.ts
-import { html, useTSElements, useTSEvent, useTSEventAll, useTSSelect } from "@devwareng/vanilla-ts";
+import { html, useTSElements, useTSEventAll, useTSSelect } from "@devwareng/vanilla-ts";
 import { AboutMe, Contact, Hero, Introduction, Portfolio } from "./Sections";
 import { useContactForm, useUniqueId } from "@/lib/hooks";
 import { contactStore } from "@/store";
@@ -25,7 +25,6 @@ const Home = (DOM: HTMLElement, websiteName: string) => {
         `
     );
 
-    useTSEvent('back', 'click', () => window.scrollTo(0, 0));
     useTSEventAll("#send", "click", (e) => {
         e.preventDefault();
         handleSubmit(e);

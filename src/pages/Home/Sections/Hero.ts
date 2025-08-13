@@ -1,11 +1,8 @@
 import 'animate.css';
 import { html, useTSElements } from '@devwareng/vanilla-ts';
-import { Github, createIcons } from 'lucide';
 
 export default function Hero(DOM: HTMLElement) {
-    createIcons({
-        icons: { Github }
-    });
+
 
     const ui = useTSElements(
         DOM,
