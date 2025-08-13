@@ -38,7 +38,10 @@ export default function Navbar(DOM: HTMLElement) {
 
     // Mount sidebar
     const sidebarContainer = DOM.querySelector('#sidebar-container')!;
-    Sidebar(sidebarContainer as HTMLElement);
+    const sidebarToggle = useSidebarToggle('sidebar', 'menu-btn');
+    Sidebar(sidebarContainer as HTMLElement, () => {
+        sidebarToggle?.hideSidebar();
+    });
 
     // Sidebar logic via hook
     useSidebarToggle('sidebar', 'menu-btn');
