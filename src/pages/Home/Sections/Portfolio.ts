@@ -1,6 +1,6 @@
 import 'animate.css';
 import { Header, Pillar } from '@/lib/components';
-import { html, useTSElements } from '@devwareng/vanilla-ts'
+import { html, useTSComponent, useTSElements } from '@devwareng/vanilla-ts'
 import { ProjectList } from './PortfolioList';
 
 export default function Portfolio(DOM: HTMLElement, dataId: number) {
@@ -26,12 +26,14 @@ export default function Portfolio(DOM: HTMLElement, dataId: number) {
                     ${Pillar(DOM, "bg-white")}
                 </div>
                 <div class="overflow-hidden">
-                    ${ProjectList(DOM, dataId)}
+                    <div id="project-list"></div>
                 </div>
             </div>
         </section>
         `
     );
+
+    useTSComponent("project-list", DOM, ProjectList, dataId);
 
     return ui;
 }

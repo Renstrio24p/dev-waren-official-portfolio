@@ -8,19 +8,19 @@ export const useSidebarToggle = (
     const menuBtn = useTSSelect<HTMLElement>(`#${menuBtnId}`)!;
 
     const showSidebar = () => {
-        sidebar.classList.remove('-translate-x-full');
-        sidebar.classList.add('translate-x-0');
+        sidebar?.classList.remove('-translate-x-full');
+        sidebar?.classList.add('translate-x-0');
     };
 
     const hideSidebar = () => {
-        sidebar.classList.remove('translate-x-0');
-        sidebar.classList.add('-translate-x-full');
+        sidebar?.classList.remove('translate-x-0');
+        sidebar?.classList.add('-translate-x-full');
     };
 
     // Menu button click → toggle sidebar
     useTSEvent(menuBtnId, 'click', (e) => {
         e.stopPropagation();
-        if (sidebar.classList.contains('-translate-x-full')) {
+        if (sidebar?.classList.contains('-translate-x-full')) {
             showSidebar();
         } else {
             hideSidebar();
@@ -30,7 +30,7 @@ export const useSidebarToggle = (
     // Click outside → close sidebar
     document.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
-        if (!sidebar.contains(target) && target !== menuBtn && !menuBtn.contains(target)) {
+        if (!sidebar?.contains(target) && target !== menuBtn && !menuBtn.contains(target)) {
             hideSidebar();
         }
     });

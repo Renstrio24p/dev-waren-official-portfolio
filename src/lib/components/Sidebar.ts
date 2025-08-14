@@ -7,7 +7,7 @@ export default function Sidebar(DOM: HTMLElement, onLinkClick?: () => void) {
         DOM,
         html`
     <aside id="sidebar"
-        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50 sidebar">
         <div class="flex flex-col gap-6 p-6">
             <div class="inline-flex items-center gap-4">
                 <img src="${Devwaren}" alt="logo">
