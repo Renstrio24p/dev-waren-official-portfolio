@@ -31,6 +31,26 @@ const techstacks = [
         backend: false
     },
     {
+        title: "LangChain",
+        image: "langchain.webp",
+        backend: false
+    },
+    {
+        title: "Next.js",
+        image: "nextjs.webp",
+        backend: false
+    },
+    {
+        title: "React Native",
+        image: "react_native.webp",
+        backend: false
+    },
+    {
+        title: "Python",
+        image: "python.webp",
+        backend: false
+    },
+    {
         title: "Jest",
         image: "jest.webp",
         backend: false
@@ -83,6 +103,11 @@ const techstacks = [
     {
         title: "Go Fiber",
         image: "go-fiber.webp",
+        backend: true
+    },
+    {
+        title: "Go Gorilla",
+        image: "gorilla.webp",
         backend: true
     },
 ]

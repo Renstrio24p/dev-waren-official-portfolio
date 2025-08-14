@@ -54,7 +54,7 @@ const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
         selectFilterProjects();
     }
 
-    return { updateProjects, selectFilterProjects, init };
+    return { init };
 }
 
 export { useFilterProjects }
