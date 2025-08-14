@@ -1,4 +1,4 @@
-import { html, useTSElements } from '@devwareng/vanilla-ts'
+import { html, useTSElements, useTSEvent } from '@devwareng/vanilla-ts'
 import Pillar from './Pillar';
 import { useUniqueId } from '../hooks';
 
@@ -34,6 +34,7 @@ export default function Footer(DOM: HTMLElement) {
         `
     );
 
+    useTSEvent("back", "click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     return ui
 }
