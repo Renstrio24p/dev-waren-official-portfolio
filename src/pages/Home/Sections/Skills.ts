@@ -9,7 +9,7 @@ export default function Skills(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="w-full flex flex-col relative animate__animated animate__fadeInUp animate__slow overflow-hidden py-32"
+        <section class="w-full flex flex-col relative animate__animated animate__fadeInUp animate__slow overflow-hidden pt-32"
             id="skills">
             <div class="w-full flex items-center justify-center">
                 ${Header(DOM, "Skills")}
