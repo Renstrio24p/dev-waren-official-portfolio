@@ -4,7 +4,7 @@ import "boxicons/css/boxicons.min.css"
 import { createIcons, icons } from "lucide";
 import { Router } from "./routes";
 import { html, useTSComponent, useTSElements, useTSMetaData, useTSAnchorMount } from '@devwareng/vanilla-ts';
-import { Footer, Navbar } from "./lib/components";
+import { useMainComponent } from "./lib/hooks";
 
 export default function Start(DOM?: HTMLElement) {
 
@@ -19,19 +19,19 @@ export default function Start(DOM?: HTMLElement) {
         author: 'Waren Gador'
     });
 
-    const title = 'Dev Waren'
+    const title = "Dev Waren"
 
     const ui = useTSElements(
         isDOM,
         html`
             <div id='nav-container'></div>
             <main id='router' class='main scroll-smooth'></main>
-            ${Footer(isDOM)}
+            <div id="footer-container"></div>
         `
     );
 
-    useTSComponent('nav-container', isDOM, Navbar);
-    useTSComponent('router', isDOM, Router, title)
+    useMainComponent(isDOM);
+    useTSComponent("router", isDOM, Router, title);
     useTSAnchorMount();
 
     return ui
