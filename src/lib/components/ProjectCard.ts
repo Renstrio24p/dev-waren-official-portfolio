@@ -20,13 +20,15 @@ export default function ProjectCard(
     const ui = useTSElements(
         DOM,
         html`
-        <a class="group relative overflow-hidden shadow-lg" id="card-${dataId}" href=${project.url}>
+        <a class="group relative overflow-hidden shadow-lg block" id="card-${dataId}" href=${project.url}>
             <img src=${project.image} alt=${project.title}
                 class="w-full h-auto transition-transform duration-500 group-hover:scale-110" />
         
             <!-- Overlay Content -->
             <div
-                class="absolute inset-0 bg-black/70 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col justify-center items-center text-white">
+                class="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-white
+                                       opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0
+                                       transition-all duration-500 ease-out pointer-events-none group-hover:pointer-events-auto">
         
                 <h3 class="font-semibold text-lg mb-2 animate__animated animate__fadeInUp animate__delay-200ms">
                     ${project.title}
