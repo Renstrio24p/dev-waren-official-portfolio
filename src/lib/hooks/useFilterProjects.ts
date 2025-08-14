@@ -1,65 +1,61 @@
 import ProjectCard from "../components/ProjectCard";
+import { tabs } from "../constants";
 import { projects } from "../constants/projects";
 
-const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
-    const updateProjects = (isFullStack?: boolean) => {
-        const container = DOM.querySelector('#projects-container');
-        if (!container) return;
 
+const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
+    const updateProjects = (filter?: boolean) => {
+        const container = DOM.querySelector('#projects-container') as HTMLElement;
+        if (!container) return;
         container.textContent = '';
 
-        const filtered = isFullStack === true
+        const filtered = filter === true
             ? projects.filter(p => p.fullStack)
-            : isFullStack === false
+            : filter === false
                 ? projects.filter(p => p.designed)
                 : projects;
 
         filtered.forEach(project => {
-            container.innerHTML += ProjectCard(container as HTMLElement, project, dataId);
+            container.innerHTML += ProjectCard(container, project, dataId);
         });
     }
 
-    const setActive = (activeId: 'allproject' | 'fullstack' | 'designed') => {
-        const tabs = ['allproject', 'fullstack', 'designed'] as const;
+    const setActive = (activeId: string) => {
+        tabs.forEach(tab => {
+            const el = DOM.querySelector(`#${tab.id}`) as HTMLElement;
+            const line = el?.nextElementSibling as HTMLElement;
+            if (!el || !line) return;
 
-        tabs.forEach(id => {
-            const tab = DOM.querySelector(`#${id}`) as HTMLElement;
-            const line = tab?.nextElementSibling as HTMLElement;
-            if (!tab || !line) return;
-
-            if (id === activeId) {
-                tab.classList.add('font-semibold');
+            if (tab.id === activeId) {
+                el.classList.add('font-semibold');
                 line.classList.replace('h-[1px]', 'h-[2px]');
             } else {
-                tab.classList.remove('font-semibold');
+                el.classList.remove('font-semibold');
                 line.classList.replace('h-[2px]', 'h-[1px]');
             }
         });
     }
 
     const selectFilterProjects = () => {
-        const allTab = DOM.querySelector('#allproject');
-        const fullstackTab = DOM.querySelector('#fullstack');
-        const designedTab = DOM.querySelector('#designed');
+        tabs.forEach(tab => {
+            const el = DOM.querySelector(`#${tab.id}`);
+            if (!el) return;
 
-        allTab?.addEventListener('click', () => {
-            updateProjects();
-            setActive('allproject');
-        });
-
-        fullstackTab?.addEventListener('click', () => {
-            updateProjects(true);
-            setActive('fullstack');
-        });
-
-        designedTab?.addEventListener('click', () => {
-            updateProjects(false);
-            setActive('designed');
+            el.addEventListener('click', () => {
+                updateProjects(tab.filter);
+                setActive(tab.id);
+            });
         });
     }
 
-    return { updateProjects, selectFilterProjects };
-}
+    // Initialize after DOM is rendered
+    const init = () => {
+        updateProjects();
+        setActive('allproject');
+        selectFilterProjects();
+    }
 
+    return { updateProjects, selectFilterProjects, init };
+}
 
 export { useFilterProjects }
