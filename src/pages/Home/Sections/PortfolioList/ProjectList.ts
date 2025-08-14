@@ -3,7 +3,7 @@ import { html, useTSElements } from '@devwareng/vanilla-ts'
 
 export default function ProjectList(DOM: HTMLElement, dataId: number) {
 
-    const { updateProjects, selectFilterProjects } = useFilterProjects(DOM, dataId);
+    const { init } = useFilterProjects(DOM, dataId);
 
     // Initial UI
     const ui = useTSElements(
@@ -29,8 +29,7 @@ export default function ProjectList(DOM: HTMLElement, dataId: number) {
     `
     );
 
-    updateProjects();
-    selectFilterProjects();
+    init();
 
     return ui;
 }
