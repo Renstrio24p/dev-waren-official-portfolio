@@ -1,6 +1,5 @@
-import ProjectCard from "../components/ProjectCard";
-import { tabs } from "../constants";
-import { projects } from "../constants/projects";
+import { ProjectCard } from "../components";
+import { tabs, projects } from "../constants";
 
 
 const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
