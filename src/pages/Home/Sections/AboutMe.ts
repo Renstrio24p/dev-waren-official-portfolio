@@ -1,5 +1,5 @@
 import { Header, Pillar } from '@/lib/components';
-import { html, useTSElements } from '@devwareng/vanilla-ts'
+import { html, useTSElements, useTSEvent } from '@devwareng/vanilla-ts'
 import Details from './Details';
 import Skills from './Skills';
 
@@ -24,7 +24,9 @@ export default function AboutMe(DOM: HTMLElement) {
                             user friendly web applications.
                         </p>
                     </div>
-                    <button class="border-x-2 w-fit px-8 py-2 uppercase tracking-widest font-semibold">Explore</button>
+                    <button
+                        class="border-x-2 w-fit px-8 py-2 uppercase tracking-widest font-semibold transition-colors duration-300 hover:bg-black hover:text-white cursor-pointer"
+                        id="explore">Explore</button>
                     ${Pillar(DOM)}
                     ${Details(DOM)}
                     ${Pillar(DOM)}
@@ -34,7 +36,10 @@ export default function AboutMe(DOM: HTMLElement) {
                 </div>
             </div>
         </section>
-`
+    `
     );
+
+    useTSEvent("explore", "click", () => window.location.href = "/about-me")
+
     return ui
 }

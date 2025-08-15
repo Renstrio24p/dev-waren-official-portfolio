@@ -1,4 +1,4 @@
-import { Home, NotFound } from "@/pages";
+import { AboutMe, Home, NotFound } from "@/pages";
 import { TSRouter, useTSParams, useTSPurifier } from "@devwareng/vanilla-ts";
 
 export const Router = (DOM: HTMLElement, websiteName: string) => {
@@ -10,6 +10,10 @@ export const Router = (DOM: HTMLElement, websiteName: string) => {
             {
                 path: "/",
                 element: () => Home(DOM, websiteName),
+            },
+            {
+                path: "/about-me",
+                element: () => AboutMe(DOM)
             },
             {
                 path: "*",

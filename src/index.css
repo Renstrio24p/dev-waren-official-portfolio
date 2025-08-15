@@ -8,3 +8,21 @@
 * {
     scroll-behavior: smooth;
 }
+
+.bg-cracked {
+    background-image: url('/bg.jpg');
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 5s linear infinite;
+}

@@ -26,7 +26,7 @@ export default function Start(DOM?: HTMLElement) {
         html`
             <div id='nav-container'></div>
             <main id='router' class='main scroll-smooth'></main>
-            <div id="footer-container"></div>
+            <div id="footer-container" class="z-[99]"></div>
         `
     );
 

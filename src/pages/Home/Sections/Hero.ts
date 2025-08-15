@@ -7,7 +7,7 @@ export default function Hero(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="flex relative min-h-[20em] md:min-h-screen z-0">
+        <section class="flex relative min-h-[20em] lg:min-h-screen z-0 overflow-hidden">
             <!-- Background Layers -->
             <div
                 class="absolute bg-[url('/bg.jpg')] bg-center bg-cover w-full z-[-1] h-[20em] lg:h-screen animate__animated animate__fadeIn">
@@ -52,10 +52,10 @@ export default function Hero(DOM: HTMLElement) {
         
             <!-- Right Section -->
             <div
-                class="absolute hidden md:flex inset-0 clip-diagonal bg-black items-center justify-center animate__animated animate__fadeInRight animate__delay-1s">
+                class="absolute hidden md:flex inset-0 clip-diagonal bg-black items-center justify-center animate__animated animate__fadeInRight animate__delay-1s bottom-0">
                 <div class="relative z-[2] h-screen w-screen">
                     <img src="/devwareng.webp" alt="Profile"
-                        class="max-h-screen object-cover z-10 absolute right-0 w-1/2 animate__animated animate__zoomIn animate__delay-2s hidden md:block"
+                        class="max-h-screen object-cover z-10 absolute md:bottom-[20%] lg:bottom-0 right-[0%] w-1/2 animate__animated animate__zoomIn animate__delay-2s hidden md:block"
                         width="500" height="500" />
                 </div>
             </div>

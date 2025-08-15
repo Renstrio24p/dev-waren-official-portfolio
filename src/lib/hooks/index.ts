@@ -8,3 +8,7 @@ export { useContactForm } from "./useContactForm";
 export { useComponents } from "./useComponent";
 export { useFilterProjects } from "./useFilterProjects";
 export { useMainComponent } from "./useMainComponent";
+export { useAboutComponents } from "./useAboutComponent";
+export { useAboutSettings } from "./useAboutSettings";
+export { useMarquee } from "./useMarquee";
+export { useLinks } from "./useLinks";
