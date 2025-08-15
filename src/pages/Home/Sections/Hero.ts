@@ -25,7 +25,7 @@ export default function Hero(DOM: HTMLElement) {
         
                     <div class="mt-4 lg:mt-32 flex gap-4 animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
-                            <a href="http://github.com/Renstrio24p"
+                            <a href="mailto:waren.gador15@gmail.com"
                                 class="bx bx-envelope text-4xl text-gray-500 hover:text-gray-600 transition-colors">
                             </a>
                         </div>
@@ -35,16 +35,16 @@ export default function Hero(DOM: HTMLElement) {
                             </a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
-                            <a href="http://"
+                            <a href="https://www.linkedin.com/in/waren-g-18505b1b7/"
                                 class="bx bxl-linkedin text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
-                            <a href="http://"
+                            <a href="https://t.me/devwareng"
                                 class="bx bxl-telegram text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
-                            <a href="http://"
-                                class="bx bxl-twitter text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
+                            <a href="https://www.facebook.com/rens.34dev"
+                                class="bx bxl-facebook text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
                         </div>
                     </div>
                 </div>

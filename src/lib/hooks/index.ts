@@ -12,3 +12,4 @@ export { useAboutComponents } from "./useAboutComponent";
 export { useAboutSettings } from "./useAboutSettings";
 export { useMarquee } from "./useMarquee";
 export { useLinks } from "./useLinks";
+export { useTestimonialCards } from "./useTestimonialCards";

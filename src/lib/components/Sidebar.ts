@@ -1,5 +1,5 @@
 // Sidebar.ts
-import { html, useTSElements } from '@devwareng/vanilla-ts';
+import { html, useTSElements, useTSEvent } from '@devwareng/vanilla-ts';
 import Devwaren from "/devwaren.webp";
 
 export default function Sidebar(DOM: HTMLElement, onLinkClick?: () => void) {
@@ -7,7 +7,7 @@ export default function Sidebar(DOM: HTMLElement, onLinkClick?: () => void) {
         DOM,
         html`
     <aside id="sidebar"
-        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50 sidebar">
+        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-[100] sidebar">
         <div class="flex flex-col gap-6 p-6">
             <div class="inline-flex items-center gap-4">
                 <img src="${Devwaren}" alt="logo">
@@ -26,13 +26,12 @@ export default function Sidebar(DOM: HTMLElement, onLinkClick?: () => void) {
     `
     );
 
-    // Close sidebar when clicking a link
-    DOM.querySelector("#sidebar")?.addEventListener("click", (e) => {
+    useTSEvent("sidebar", "click", (e) => {
         const target = e.target as HTMLElement;
         if (target.tagName === "A") {
             const href = (target as HTMLAnchorElement).getAttribute("href") || "";
             if (href.startsWith("#")) {
-                onLinkClick?.(); // call the close function passed from Navbar
+                onLinkClick?.();
             }
         }
     });

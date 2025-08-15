@@ -1,4 +1,4 @@
-import { AboutHero, Carousel, ClosingNote, PersonalLife, ProfessionalLife, WorkGallery } from "@/pages/AboutMe/Sections"
+import { AboutHero, Carousel, ClosingNote, PersonalLife, ProfessionalLife, Testimonials, WorkGallery } from "@/pages/AboutMe/Sections"
 import { useTSCollection } from "@devwareng/vanilla-ts"
 
 const useAboutComponents = (DOM: HTMLElement) => {
@@ -9,7 +9,8 @@ const useAboutComponents = (DOM: HTMLElement) => {
         "professional-life",
         "personal-life",
         "closing-note",
-        "working-gallery"
+        "working-gallery",
+        "testimonials"
     ]
 
     const components = [
@@ -18,7 +19,8 @@ const useAboutComponents = (DOM: HTMLElement) => {
         ProfessionalLife,
         PersonalLife,
         ClosingNote,
-        WorkGallery
+        WorkGallery,
+        Testimonials
     ]
 
     useTSCollection(sections, DOM, components)

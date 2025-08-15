@@ -27,6 +27,7 @@ export default function AboutMe(DOM: HTMLElement) {
                     <div id="personal-life"></div>
                 </div>
                 <div id="working-gallery"></div>
+                <div id="testimonials"></div>
                 <div id="closing-note"></div>
                 <div id="carousel"></div>
                 <div id="contact-section"></div>

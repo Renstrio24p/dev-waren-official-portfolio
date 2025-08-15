@@ -8,5 +8,7 @@ import Footer from "./Footer";
 import ProjectCard from "./ProjectCard";
 import LinkBlock from "./LinkBlock";
 import Title from "./Title";
+import TestimonialCards from "./TestimonialCards";
+import { Stars } from "./Stars";
 
-export { Navbar, NavContainer, Pillar, Info, Header, Stacks, Footer, ProjectCard, LinkBlock, Title };
+export { Navbar, NavContainer, Pillar, Info, Header, Stacks, Footer, ProjectCard, LinkBlock, Title, TestimonialCards, Stars };
