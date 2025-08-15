@@ -30,7 +30,7 @@ export default function Hero(DOM: HTMLElement) {
                             </a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
-                            <a href="http://github.com/devwaren"
+                            <a href="http://github.com/Renstrio24p"
                                 class="bx bxl-github text-4xl text-gray-500 hover:text-gray-600 transition-colors">
                             </a>
                         </div>
