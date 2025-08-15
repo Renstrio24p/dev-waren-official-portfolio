@@ -4,6 +4,7 @@ import { initMarqueeeSlider } from "../utils";
 import { Contact } from "@/pages/Home/Sections";
 
 let isScrolled = false; // track scroll state
+let isContactVisible = false; // persistent toggle state
 
 const useAboutSettings = (DOM: HTMLElement) => {
     const nameTitle = useTSSelect("#name-logo") as HTMLElement | null;
@@ -46,8 +47,6 @@ const useAboutSettings = (DOM: HTMLElement) => {
     };
 
     const handleShowContact = () => {
-        let isContactVisible = false; // toggle state
-
         contactMe?.addEventListener("click", () => {
             const contactSection = DOM.querySelector("#contact-section");
 
@@ -60,12 +59,9 @@ const useAboutSettings = (DOM: HTMLElement) => {
             }
 
             // Toggle the state
-            return (isContactVisible = !isContactVisible);
-
+            isContactVisible = !isContactVisible;
         });
     };
-
-
 
     window.addEventListener("scroll", handleScroll);
     initMarqueeeSlider("marquee");

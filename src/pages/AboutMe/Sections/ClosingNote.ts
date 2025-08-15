@@ -31,7 +31,7 @@ export default function ClosingNote(DOM: HTMLElement) {
             <p class="py-4">Click the button below to get in touch with me</p>
         
             <button type="submit" id="contact-me"
-                class="border-x-2 w-fit px-8 py-2 uppercase tracking-widest font-semibold transition-colors duration-300 hover:bg-black hover:text-white animate__animated animate__pulse animate__delay-3s animate__repeat-2">
+                class="animate__animated animate__fadeIn animate__delay-3s border-x-2 w-fit px-8 py-2 uppercase tracking-widest font-semibold transition-colors duration-300 hover:bg-black hover:text-white animate__animated animate__pulse animate__delay-3s animate__repeat-2">
                 Contact
             </button>
         

@@ -3,6 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import express from 'express'
 import type { ViteDevServer } from 'vite'
+import crypto from 'crypto' // added for nonce
 
 // Constants
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -12,6 +13,19 @@ const base = process.env.BASE || '/'
 
 // Create Express app
 const app = express()
+
+// ✅ CSP middleware
+app.use((_req, res, next) => {
+  const nonce = crypto.randomBytes(16).toString('base64')
+  res.locals.nonce = nonce
+
+  res.setHeader(
+    'Content-Security-Policy',
+    `default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'nonce-${nonce}'; font-src 'self' https: data:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'`
+  )
+
+  next()
+})
 
 // Dev server (Vite) or static file handler
 let vite: ViteDevServer | undefined
@@ -37,7 +51,7 @@ app.use('*all', async (req, res) => {
     const url = req.originalUrl.replace(base, '')
 
     let template: string
-    let render: (url: string) => Promise<{ html: string; head: string }>
+    let render: (url: string, nonce: string) => Promise<{ html: string; head: string }>
 
     if (isDev && vite) {
       template = await fs.readFile(path.resolve(__dirname, 'index.html'), 'utf-8')
@@ -49,11 +63,14 @@ app.use('*all', async (req, res) => {
       render = mod.render as typeof render
     }
 
-    const rendered = await render(url)
+    // Pass nonce to render function in case your app injects inline scripts
+    const rendered = await render(url, res.locals.nonce)
 
     const html = template
       .replace(`<!--app-head-->`, rendered.head ?? '')
       .replace(`<!--app-html-->`, rendered.html ?? '')
+      // Optional: inject nonce into all inline scripts automatically
+      .replace(/<script(?![^>]*src)/g, `<script nonce="${res.locals.nonce}"`)
 
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
