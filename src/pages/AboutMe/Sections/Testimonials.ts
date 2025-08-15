@@ -9,7 +9,7 @@ export default function Testimonials(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="py-16 px-2">
+        <section class="pt-16 pb-4 px-2">
             ${Title("Client Testimonials")}
             <div class="grid md:grid-cols-2">
                 ${testimonialCards}

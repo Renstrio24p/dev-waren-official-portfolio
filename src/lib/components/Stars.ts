@@ -1,9 +1,19 @@
-import { html } from "@devwareng/vanilla-ts";
+// components/Stars.ts
+import { html } from '@devwareng/vanilla-ts';
 
-const Stars = () => (
-    Array.from({ length: 5 }, () =>
-        html`<i class='bx bxs-star text-yellow-500'></i>`
-    ).join('')
-)
+// rating: number between 0–5
+export function Stars(rating = 5) {
+    const fullStars = Math.floor(rating);
+    const emptyStars = 5 - fullStars;
 
-export { Stars }
+    return html`
+        ${Array(fullStars)
+        .fill(null)
+        .map(() => html`<i class='bx bxs-star text-yellow-500'></i>`)
+        .join('')}
+        ${Array(emptyStars)
+        .fill(null)
+        .map(() => html`<i class='bx bx-star text-yellow-500'></i>`)
+        .join('')}
+    `;
+}
