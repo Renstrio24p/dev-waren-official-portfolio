@@ -15,19 +15,31 @@ const base = process.env.BASE || '/'
 const app = express()
 
 // ✅ CSP middleware
+// ✅ CSP middleware
 if (!isDev) {
   app.use((_req, res, next) => {
-    const nonce = crypto.randomBytes(16).toString('base64')
-    res.locals.nonce = nonce
+    const nonce = crypto.randomBytes(16).toString("base64");
+    res.locals.nonce = nonce;
 
-    res.setHeader(
-      'Content-Security-Policy',
-      `default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'nonce-${nonce}'; font-src 'self' https: data:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'`
-    )
+    const csp = [
+      "require-trusted-types-for 'script';",
+      "default-src 'self'",
+      "img-src 'self' data: https:",
+      "style-src 'self' 'unsafe-inline'",
+      `script-src 'self' 'nonce-${nonce}'`,
+      "font-src 'self' https: data:",
+      "connect-src 'self' https:",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'"
+    ].join("; ");
 
-    next()
-  })
+    res.setHeader("Content-Security-Policy", csp);
+
+    next();
+  });
 }
+
 
 // Dev server (Vite) or static file handler
 let vite: ViteDevServer | undefined
