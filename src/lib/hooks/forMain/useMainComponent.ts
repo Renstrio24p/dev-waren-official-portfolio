@@ -20,6 +20,7 @@ const useMainComponent = (isDOM: HTMLElement, title: string) => {
 
     useVercelInsights();
     useTSCollection(sections, isDOM, components, [title])
+    window.addEventListener("load", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
 }
 

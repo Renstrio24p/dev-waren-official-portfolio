@@ -19,6 +19,7 @@ const useHomeComponents = (DOM: HTMLElement) => {
     ]
 
     useTSCollection(sections, DOM, components)
+
 }
 
 export { useHomeComponents }
