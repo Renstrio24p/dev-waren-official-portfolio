@@ -13,3 +13,4 @@ export { useLinks } from "./forNavbar/useLinks";
 export { useTestimonialCards } from "./forHome/useTestimonialCards";
 export { useIntroductionSettings } from "./forHome/useIntroductionSettings";
 export { useServicesSettings } from "./forServices/useServicesSettings";
+export { useVercelInsights } from "./vercel/useVercelInsights"
