@@ -25,7 +25,7 @@ export default function Navbar(DOM: HTMLElement) {
                         Contact Me
                     </a>
                 </nav>
-                <button class="block md:hidden text-black" id="menu-btn">
+                <button class="block md:hidden text-black cursor-pointer" id="menu-btn">
                     <i class="bx bx-menu text-4xl"></i>
                 </button>
             </div>
