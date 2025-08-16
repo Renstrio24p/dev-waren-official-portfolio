@@ -16,30 +16,41 @@ export default function PersonalLife(DOM: HTMLElement) {
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-center animate__animated animate__zoomIn animate__delay-2s">
                 <!-- Left Image -->
-                <img src="/dinner.jpg" alt="Dinner at Dookie Restaurant"
-                    class="rounded-lg shadow-lg w-full h-64 md:h-full object-cover object-left animate__animated animate__fadeInLeft">
+                <div class="overflow-hidden group h-full">
+                    <img src="/dinner.jpg" alt="Dinner at Dookie Restaurant"
+                        class="rounded-lg shadow-lg w-full md:h-full object-cover object-left transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105">
+                </div>
         
                 <!-- Right Grid -->
                 <div
-                    class="grid grid-cols-4 grid-rows-4 gap-2 w-full max-w-full md:max-w-[500px] md:max-h-[500px] mx-auto animate__animated animate__fadeInRight">
+                    class="grid grid-cols-4 grid-rows-4 gap-2 w-full max-w-full md:max-w-[500px] md:max-h-[500px] mx-auto group">
+        
                     <!-- Top-left big square -->
                     <div class="rounded-lg col-span-3 row-span-3 overflow-hidden">
-                        <img src="/gallery8.webp" class="object-cover w-full h-full" alt="">
+                        <img src="/gallery8.webp"
+                            class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                            alt="">
                     </div>
         
                     <!-- Top-right rectangle -->
                     <div class="rounded-lg col-span-1 row-span-1 overflow-hidden">
-                        <img src="/gallery7.webp" class="object-cover w-full h-full" alt="">
+                        <img src="/gallery7.webp"
+                            class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                            alt="">
                     </div>
         
                     <!-- Middle-right tall rectangle -->
                     <div class="rounded-lg col-span-1 row-span-2 overflow-hidden">
-                        <img src="/gallery6.webp" class="object-cover w-full h-full" alt="">
+                        <img src="/gallery6.webp"
+                            class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                            alt="">
                     </div>
         
                     <!-- Bottom-left rectangle -->
                     <div class="rounded-lg col-span-4 row-span-2 overflow-hidden">
-                        <img src="/gallery5.jpg" class="object-cover object-center w-full h-full" alt="">
+                        <img src="/gallery5.jpg"
+                            class="object-cover object-center w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                            alt="">
                     </div>
                 </div>
             </div>

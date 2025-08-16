@@ -31,7 +31,7 @@ export default function Start(DOM?: HTMLElement) {
         `
     );
 
-    useMainComponent(isDOM);
+    useMainComponent(isDOM, title);
     useTSComponent("router", isDOM, Router, title);
     useTSAnchorMount();
 

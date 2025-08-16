@@ -8,10 +8,7 @@ export default function Hero(DOM: HTMLElement) {
         DOM,
         html`
         <section class="flex relative min-h-[20em] lg:min-h-screen z-0 overflow-hidden">
-            <!-- Background Layers -->
-            <div
-                class="absolute bg-[url('/bg.jpg')] bg-center bg-cover w-full z-[-1] h-[20em] lg:h-screen animate__animated animate__fadeIn">
-            </div>
+        
             <div
                 class="absolute bg-gray-50/90 bg-center bg-cover w-full z-[-1] h-[20em] lg:h-screen animate__animated animate__fadeIn animate__delay-1s">
             </div>

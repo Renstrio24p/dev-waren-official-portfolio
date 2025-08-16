@@ -1,3 +1,4 @@
+export { useContactVisibility } from './forContact/useContactVisibility';
 export { useSidebarToggle } from './forNavbar/useSidebarToggle';
 export { useScrollNavbar } from './forNavbar/useScrollbar';
 export { useFilterTechStacks } from "./forHome/useFilterTechStacks";

@@ -1,7 +1,6 @@
 import { Contact } from "@/pages/Home/Sections";
 import { useTSComponent, useTSSelect } from "@devwareng/vanilla-ts";
 
-
 let isContactVisible = false;
 
 const useContactVisibility = (DOM: HTMLElement) => {
@@ -9,23 +8,23 @@ const useContactVisibility = (DOM: HTMLElement) => {
 
     const handleShowContact = () => {
         contactMe?.addEventListener("click", () => {
-            const contactSection = DOM.querySelector("#contact-section");
+            const contactSection = useTSSelect("#contact-section-container") as HTMLElement | null;
+
+            if (!contactSection) return;
 
             if (!isContactVisible) {
-                // Show the contact section
-                useTSComponent("contact-section", DOM, Contact);
+                // ✅ mount Contact into reserved container
+                useTSComponent("contact-section-container", DOM, Contact);
+                isContactVisible = true;
             } else {
-                // Hide the contact section if it exists
-                contactSection?.remove();
+                // ✅ clear the container instead of removing it
+                contactSection.innerHTML = "";
+                isContactVisible = false;
             }
-
-            // Toggle the state
-            isContactVisible = !isContactVisible;
         });
     };
 
     return { handleShowContact };
-
 };
 
 export { useContactVisibility };

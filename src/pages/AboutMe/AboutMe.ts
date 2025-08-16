@@ -8,7 +8,6 @@ export default function AboutMe(DOM: HTMLElement) {
         author: 'Waren Gador'
     });
 
-
     const ui = useTSElements(
         DOM,
         html`

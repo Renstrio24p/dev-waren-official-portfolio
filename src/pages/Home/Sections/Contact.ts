@@ -11,8 +11,8 @@ export default function Contact(DOM: HTMLElement) {
         DOM,
         html`
         <section id="contact" class="relative min-h-screen animate__animated animate__fadeInUp animate__slow py-32">
-            <div class="absolute bg-[url('/bg.jpg')] bg-fixed bg-center bg-cover w-full z-[-1] h-screen"></div>
-            <div class="absolute bg-gray-50/97 bg-center bg-cover w-full z-[-1] h-screen"></div>
+            <div class="absolute bg-[url('/bg.webp')] bg-fixed bg-cover bg-center w-full min-h-screen max-h-fit z-[-1]"></div>
+            <div class="absolute bg-gray-50/95 bg-center bg-cover w-full z-[-1] h-screen"></div>
         
             <div class="max-w-screen-2xl mx-auto py-16 flex flex-col gap-8 items-center">
                 ${Header(DOM, "Contact")}

@@ -22,8 +22,17 @@ if (!isDev) {
 
     res.setHeader(
       'Content-Security-Policy',
-      `default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'nonce-${nonce}'; font-src 'self' https: data:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'`
+      `default-src 'self';
+   img-src 'self' data: https:;
+   style-src 'self' 'unsafe-inline';
+   script-src 'self' 'nonce-${nonce}' https://*.vercel-insights.com;
+   font-src 'self' https: data:;
+   connect-src 'self' https://*.vercel-insights.com;
+   object-src 'none';
+   base-uri 'self';
+   form-action 'self'`
     )
+
 
     next()
   })

@@ -1,24 +1,26 @@
 import { useTSCollection } from "@devwareng/vanilla-ts"
 import { Footer, Navbar } from "../../components"
 import { useVercelInsights } from "../vercel/useVercelInsights"
+import { Router } from "@/routes"
 
-const useMainComponent = (isDOM: HTMLElement) => {
+const useMainComponent = (isDOM: HTMLElement, title: string) => {
 
-    const { analytics } = useVercelInsights();
 
     const sections = [
         "nav-container",
+        "router",
         "footer-container"
     ]
 
     const components = [
         Navbar,
+        Router,
         Footer
     ]
 
-    useTSCollection(sections, isDOM, components)
+    useVercelInsights();
+    useTSCollection(sections, isDOM, components, [title])
 
-    analytics
 }
 
 export { useMainComponent }

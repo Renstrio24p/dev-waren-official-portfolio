@@ -14,33 +14,34 @@ export default function WorkGallery(DOM: HTMLElement) {
                     developer
                 </p>
             </div>
-            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2 group">
                 <!-- Top-left big square -->
                 <div class="overflow-hidden">
                     <img src="/gallery4.webp"
-                        class="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+                        class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                        alt="">
                 </div>
         
-                <!-- Top-right rectangle -->
                 <div class="overflow-hidden">
                     <img src="/gallery2.webp"
-                        class="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+                        class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                        alt="">
                 </div>
         
-                <!-- Middle-right tall rectangle -->
                 <div class="overflow-hidden">
                     <img src="/gallery3.webp"
-                        class="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105" alt="">
+                        class="object-cover w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
+                        alt="">
                 </div>
         
                 <div class="overflow-hidden">
                     <img src="/gallery1.webp"
-                        class="object-cover object-center w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
+                        class="object-cover object-center w-full h-full transition duration-300 ease-in-out group-hover:opacity-30 hover:!opacity-100 hover:scale-105"
                         alt="">
                 </div>
             </div>
         </div>
-`
+        `
     );
     return ui
 }
