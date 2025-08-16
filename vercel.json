@@ -13,7 +13,10 @@
         },
         {
             "src": "/(.*)",
-            "dest": "/server.ts"
+            "dest": "/server.ts",
+            "headers": {
+                "Content-Security-Policy": "require-trusted-types-for 'script';"
+            }
         }
     ]
 }
