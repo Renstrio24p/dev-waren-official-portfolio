@@ -15,7 +15,6 @@ const base = process.env.BASE || '/'
 const app = express()
 
 // ✅ CSP middleware
-// ✅ CSP middleware
 if (!isDev) {
   app.use((_req, res, next) => {
     const nonce = crypto.randomBytes(16).toString("base64");
@@ -26,9 +25,11 @@ if (!isDev) {
       "default-src 'self'",
       "img-src 'self' data: https:",
       "style-src 'self' 'unsafe-inline'",
-      `script-src 'self' 'nonce-${nonce}'`,
+      // Allow your nonce + Google services
+      `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com`,
       "font-src 'self' https: data:",
-      "connect-src 'self' https:",
+      // Allow PSI/Lighthouse fetches
+      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'"
@@ -39,6 +40,7 @@ if (!isDev) {
     next();
   });
 }
+
 
 
 // Dev server (Vite) or static file handler
