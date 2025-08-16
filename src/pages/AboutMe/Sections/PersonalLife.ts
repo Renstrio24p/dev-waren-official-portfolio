@@ -6,21 +6,22 @@ export default function PersonalLife(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="space-y-6 text-gray-600">
+        <section class="space-y-6 text-gray-600 animate__animated animate__fadeIn">
             ${Title("Personal Life")}
-            <p>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">
                 Life is not all about work — I also make time to enjoy good food and create memories.
                 One of my favorite spots is <strong>Dookie Restaurant</strong>, where I often share
                 dinner with family and friends. The place has a warm, welcoming atmosphere that
                 makes every meal feel special.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-center animate__animated animate__zoomIn animate__delay-2s">
                 <!-- Left Image -->
                 <img src="/dinner.jpg" alt="Dinner at Dookie Restaurant"
-                    class="rounded-lg shadow-lg w-full h-64 md:h-full object-cover object-left">
+                    class="rounded-lg shadow-lg w-full h-64 md:h-full object-cover object-left animate__animated animate__fadeInLeft">
         
                 <!-- Right Grid -->
-                <div class="grid grid-cols-4 grid-rows-4 gap-2 w-full max-w-full md:max-w-[500px] md:max-h-[500px] mx-auto">
+                <div
+                    class="grid grid-cols-4 grid-rows-4 gap-2 w-full max-w-full md:max-w-[500px] md:max-h-[500px] mx-auto animate__animated animate__fadeInRight">
                     <!-- Top-left big square -->
                     <div class="rounded-lg col-span-3 row-span-3 overflow-hidden">
                         <img src="/gallery8.webp" class="object-cover w-full h-full" alt="">
@@ -41,10 +42,9 @@ export default function PersonalLife(DOM: HTMLElement) {
                         <img src="/gallery5.jpg" class="object-cover object-center w-full h-full" alt="">
                     </div>
                 </div>
-        
             </div>
         
-            <p>
+            <p class="animate__animated animate__fadeInUp animate__delay-3s">
                 I currently live in <strong>Mandaluyong City</strong>, a bustling area in the heart
                 of Metro Manila. Surrounded by vibrant streets and friendly neighbors, it’s a place
                 that feels like home and keeps me connected to both city life and community warmth.

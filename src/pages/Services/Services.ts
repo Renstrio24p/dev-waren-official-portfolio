@@ -12,8 +12,8 @@ export default function Services(DOM: HTMLElement) {
         DOM,
         html`
         <div>
+            <div id="services-hero"></div>
             <div class="max-w-screen-2xl mx-auto">
-                <div id="services-hero"></div>
             </div>
         </div>
     `

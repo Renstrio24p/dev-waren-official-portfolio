@@ -10,7 +10,7 @@
 }
 
 .bg-cracked {
-    background-image: url('/bg.jpg');
+    background-image: url('/bg.webp');
 }
 
 @keyframes marquee {
