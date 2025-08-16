@@ -11,3 +11,13 @@ export interface VercelResponse extends ServerResponse {
     json: (body: any) => void
     send: (body: string) => void
 }
+
+interface TrustedTypePolicyFactory {
+    getPolicy?(name: string): TrustedTypePolicy | undefined;
+}
+
+declare global {
+    interface Window {
+        trustedTypes?: TrustedTypePolicyFactory;
+    }
+}

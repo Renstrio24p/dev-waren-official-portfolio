@@ -4,6 +4,19 @@ import "boxicons/css/boxicons.min.css"
 import { Router } from "./routes";
 import { html, useTSComponent, useTSElements, useTSMetaData, useTSAnchorMount } from '@devwareng/vanilla-ts';
 import { useMainComponent } from "./lib/hooks";
+import DOMPurify from 'dompurify';
+
+interface TrustedTypePolicyFactory {
+    getPolicy?(name: string): TrustedTypePolicy | undefined;
+    createPolicy?(name: string, options: TrustedTypePolicyOptions): TrustedTypePolicy;
+}
+
+declare global {
+    interface Window {
+        trustedTypes?: TrustedTypePolicyFactory;
+        createPolicy?(name: string, options: TrustedTypePolicyOptions): TrustedTypePolicy | string;
+    }
+}
 
 export default function Start(DOM?: HTMLElement) {
 
@@ -32,6 +45,12 @@ export default function Start(DOM?: HTMLElement) {
     useMainComponent(isDOM, title);
     useTSComponent("router", isDOM, Router, title);
     useTSAnchorMount();
+
+    if (window.trustedTypes && !window.trustedTypes.getPolicy?.("default")) {
+        window.trustedTypes.createPolicy!("default", {
+            createHTML: (string: string) => DOMPurify.sanitize(string),
+        });
+    }
 
     return ui
 

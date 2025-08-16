@@ -20,7 +20,6 @@ if (!isDev) {
     res.locals.nonce = nonce;
 
     const csp = [
-      "require-trusted-types-for 'script';",
       "default-src 'self'",
       "img-src 'self' data: https:",
       "style-src 'self' 'unsafe-inline'",
@@ -43,7 +42,6 @@ if (!isDev) {
     next();
   });
 }
-
 
 
 
