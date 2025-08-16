@@ -9,7 +9,8 @@ export default function TestimonialCards() {
             <p class="text-gray-600">${e.message}</p>
             <div class="flex flex-col sm:flex-row justify-between md:items-center gap-2">
                 <div class="inline-flex items-center gap-4 mt-8">
-                    <img src="${e.image}" alt="${e.name}" class="w-12 h-12 rounded-full" loading="lazy" />
+                    <img src="${e.image}" alt="${e.name}" class="w-12 h-12 rounded-full" fetchpriority="low" width="48"
+                        height="48" loading="lazy" />
                     <div>
                         <h3 class="text-lg font-semibold">${e.name}</h3>
                         <p class="text-sm text-gray-600">${e.school}</p>
