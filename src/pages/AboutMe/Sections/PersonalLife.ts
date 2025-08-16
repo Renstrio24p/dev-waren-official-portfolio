@@ -6,7 +6,7 @@ export default function PersonalLife(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="space-y-4 text-gray-600">
+        <section class="space-y-6 text-gray-600">
             ${Title("Personal Life")}
             <p>
                 Life is not all about work — I also make time to enjoy good food and create memories.
