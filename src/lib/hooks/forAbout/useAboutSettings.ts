@@ -12,6 +12,8 @@ const useAboutSettings = (DOM: HTMLElement) => {
     handleScroll();
     useAboutComponents(DOM);
 
+    window.addEventListener("load", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
 };
 
 export { useAboutSettings };
