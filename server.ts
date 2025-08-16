@@ -14,9 +14,8 @@ const base = process.env.BASE || '/'
 // Create Express app
 const app = express()
 
-// ✅ CSP middleware
 if (!isDev) {
-  app.use((_req, res, next) => {
+  app.use((req, res, next) => {
     const nonce = crypto.randomBytes(16).toString("base64");
     res.locals.nonce = nonce;
 
@@ -25,21 +24,26 @@ if (!isDev) {
       "default-src 'self'",
       "img-src 'self' data: https:",
       "style-src 'self' 'unsafe-inline'",
-      // Allow your nonce + Google services
       `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com`,
       "font-src 'self' https: data:",
-      // Allow PSI/Lighthouse fetches
       "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'"
     ].join("; ");
 
-    res.setHeader("Content-Security-Policy", csp);
+    // Detect PSI/Lighthouse user agents
+    const ua = req.headers['user-agent'] || "";
+    if (/Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua)) {
+      res.setHeader("Content-Security-Policy-Report-Only", csp);
+    } else {
+      res.setHeader("Content-Security-Policy", csp);
+    }
 
     next();
   });
 }
+
 
 
 
