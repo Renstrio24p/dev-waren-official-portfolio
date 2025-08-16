@@ -1,6 +1,5 @@
 
 import { html } from '@devwareng/vanilla-ts'
-import "boxicons/css/boxicons.min.css";
 import { useUniqueId } from '../hooks';
 
 type Links = {
