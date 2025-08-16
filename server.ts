@@ -31,7 +31,16 @@ if (!isDev) {
       "form-action 'self'"
     ].join("; ");
 
-    // Detect PSI/Lighthouse user agents
+    // ✅ Security headers
+    res.setHeader("X-Frame-Options", "DENY"); // Prevent clickjacking
+    res.setHeader("X-Content-Type-Options", "nosniff"); // Block MIME type sniffing
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin"); // Limit referrer leakage
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()"); // Block sensitive APIs
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin"); // Protect against XS-Leaks
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp"); // Required for COOP
+    res.setHeader("Cross-Origin-Resource-Policy", "same-origin"); // Restrict cross-origin resource sharing
+
+    // ✅ CSP handling
     const ua = req.headers['user-agent'] || "";
     if (/Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua)) {
       res.setHeader("Content-Security-Policy-Report-Only", csp);
@@ -42,6 +51,7 @@ if (!isDev) {
     next();
   });
 }
+
 
 
 
