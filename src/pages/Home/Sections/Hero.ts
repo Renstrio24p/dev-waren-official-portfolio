@@ -23,25 +23,30 @@ export default function Hero(DOM: HTMLElement) {
                     <div class="mt-4 lg:mt-32 flex gap-4 animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
                             <a href="mailto:waren.gador15@gmail.com"
-                                class="bx bx-envelope text-4xl text-gray-500 hover:text-gray-600 transition-colors">
+                                class="bx bx-envelope text-4xl text-gray-500 hover:text-gray-600 transition-colors"
+                                aria-label="email">
                             </a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
                             <a href="http://github.com/devwaren"
-                                class="bx bxl-github text-4xl text-gray-500 hover:text-gray-600 transition-colors">
+                                class="bx bxl-github text-4xl text-gray-500 hover:text-gray-600 transition-colors"
+                                aria-label="github">
                             </a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
                             <a href="https://www.linkedin.com/in/waren-g-18505b1b7/"
-                                class="bx bxl-linkedin text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
+                                class="bx bxl-linkedin text-4xl text-gray-500 hover:text-gray-600 transition-colors"
+                                aria-label="linkedin"></a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
                             <a href="https://t.me/devwareng"
-                                class="bx bxl-telegram text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
+                                class="bx bxl-telegram text-4xl text-gray-500 hover:text-gray-600 transition-colors"
+                                aria-label="telegram"></a>
                         </div>
                         <div class="w-10 h-10 rounded-xs bg-white shadow flex items-center justify-center">
                             <a href="https://www.facebook.com/rens.34dev"
-                                class="bx bxl-facebook text-4xl text-gray-500 hover:text-gray-600 transition-colors"></a>
+                                class="bx bxl-facebook text-4xl text-gray-500 hover:text-gray-600 transition-colors"
+                                aria-label="facebook"></a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +56,7 @@ export default function Hero(DOM: HTMLElement) {
             <div
                 class="absolute hidden md:flex inset-0 clip-diagonal bg-black items-center justify-center animate__animated animate__fadeInRight animate__delay-1s bottom-0">
                 <div class="relative z-[2] h-screen w-screen">
-                    <img src="/devwareng.webp" alt="Profile"
+                    <img fetchpriority="high" src="/devwareng.webp" alt="Profile"
                         class="max-h-screen object-cover z-10 absolute md:bottom-[20%] lg:bottom-0 right-[0%] w-1/2 animate__animated animate__zoomIn animate__delay-2s hidden md:block"
                         width="500" height="500" />
                 </div>
