@@ -60,6 +60,7 @@ export default function Hero(DOM: HTMLElement) {
                 </div>
             </div>
         </section>
+        
         `
     );
 
