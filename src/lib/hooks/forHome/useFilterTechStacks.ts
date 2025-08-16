@@ -1,5 +1,5 @@
-import { techstacks } from "../constants";
-import { languages } from "../constants/techstacks";
+import { techstacks } from "../../constants";
+import { languages } from "../../constants/techstacks";
 
 const useFilterTechStacks = () => {
     const filteredTechstacks = techstacks.filter((techstack) => techstack.backend === false);

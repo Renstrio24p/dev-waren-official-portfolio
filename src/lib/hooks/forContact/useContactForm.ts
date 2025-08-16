@@ -1,6 +1,6 @@
 import { useSubmitForm } from '@/lib/hooks';
 import { contactStore } from '@/store';
-import { contactSchema } from '../validators';
+import { contactSchema } from '../../validators';
 
 type ContactErrors = {
     name?: string;

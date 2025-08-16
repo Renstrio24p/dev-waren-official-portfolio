@@ -1,7 +1,7 @@
 import { AboutMe, Contact, Hero, Introduction, Portfolio } from "@/pages/Home/Sections"
 import { useTSCollection } from "@devwareng/vanilla-ts"
 
-const useComponents = (DOM: HTMLElement) => {
+const useHomeComponents = (DOM: HTMLElement) => {
     const sections = [
         "hero-section",
         "introduction-section",
@@ -21,4 +21,4 @@ const useComponents = (DOM: HTMLElement) => {
     useTSCollection(sections, DOM, components)
 }
 
-export { useComponents }
+export { useHomeComponents }

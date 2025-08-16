@@ -14,7 +14,7 @@ export default function AboutHero(DOM: HTMLElement) {
         
             <!-- Left Content -->
             <div
-                class="flex flex-col gap-8 text-gray-600 leading-relaxed px-4 animate__animated animate__fadeInLeft animate__delay-1s">
+                class="flex flex-col gap-8 text-gray-600 leading-relaxed px-4 md:px-0 animate__animated animate__fadeInLeft animate__delay-1s">
                 ${Title("About Myself")}
         
                 <p class="animate__animated animate__fadeIn animate__delay-1_5s">

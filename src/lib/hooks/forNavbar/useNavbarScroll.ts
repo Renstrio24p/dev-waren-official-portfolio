@@ -1,15 +1,11 @@
-import { useTSComponent, useTSSelect } from "@devwareng/vanilla-ts";
+import { useTSSelect } from "@devwareng/vanilla-ts";
 import { animate } from "motion";
-import { initMarqueeeSlider } from "../utils";
-import { Contact } from "@/pages/Home/Sections";
 
-let isScrolled = false; // track scroll state
-let isContactVisible = false; // persistent toggle state
+let isScrolled = false;
 
-const useAboutSettings = (DOM: HTMLElement) => {
+const useNavbarScroll = () => {
     const nameTitle = useTSSelect("#name-logo") as HTMLElement | null;
     const navbar = useTSSelect("#navbar") as HTMLElement | null;
-    const contactMe = useTSSelect("#contact-me") as HTMLElement | null;
 
     if (!nameTitle || !navbar) return;
 
@@ -46,27 +42,7 @@ const useAboutSettings = (DOM: HTMLElement) => {
         }
     };
 
-    const handleShowContact = () => {
-        contactMe?.addEventListener("click", () => {
-            const contactSection = DOM.querySelector("#contact-section");
-
-            if (!isContactVisible) {
-                // Show the contact section
-                useTSComponent("contact-section", DOM, Contact);
-            } else {
-                // Hide the contact section if it exists
-                contactSection?.remove();
-            }
-
-            // Toggle the state
-            isContactVisible = !isContactVisible;
-        });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    initMarqueeeSlider("marquee");
-    handleScroll(); // run on load
-    handleShowContact();
+    return { handleScroll };
 };
 
-export { useAboutSettings };
+export { useNavbarScroll };

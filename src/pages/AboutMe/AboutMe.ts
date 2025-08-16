@@ -1,4 +1,4 @@
-import { useAboutComponents, useAboutSettings } from '@/lib/hooks';
+import { useAboutSettings } from '@/lib/hooks';
 import { html, useTSElements, useTSMetaData } from '@devwareng/vanilla-ts';
 
 export default function AboutMe(DOM: HTMLElement) {
@@ -20,9 +20,9 @@ export default function AboutMe(DOM: HTMLElement) {
             </div>
             <div class="fixed bg-cracked bg-fixed bg-cover bg-no-repeat w-full min-h-screen z-[-1]">
             </div>
-            <div class="relative max-w-screen-2xl mx-auto py-32 z-[10] px-4">
+            <div class="relative max-w-screen-2xl mx-auto py-32 z-[10] px-4 md:px-0">
                 <div id="about-hero"></div>
-                <div class="grid lg:grid-cols-2">
+                <div class="grid lg:grid-cols-2 gap-4">
                     <div id="professional-life"></div>
                     <div id="personal-life"></div>
                 </div>
@@ -36,7 +36,6 @@ export default function AboutMe(DOM: HTMLElement) {
         `
     );
 
-    useAboutComponents(DOM);
     useAboutSettings(DOM);
     return ui;
 }

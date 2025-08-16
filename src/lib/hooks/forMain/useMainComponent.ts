@@ -1,5 +1,5 @@
 import { useTSCollection } from "@devwareng/vanilla-ts"
-import { Footer, Navbar } from "../components"
+import { Footer, Navbar } from "../../components"
 
 const useMainComponent = (isDOM: HTMLElement) => {
 

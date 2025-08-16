@@ -1,8 +1,0 @@
-
-const useMarquee = () => {
-
-   
-
-}
-
-export { useMarquee }

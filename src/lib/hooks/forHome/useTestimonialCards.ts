@@ -1,4 +1,4 @@
-import { Stars, TestimonialCards } from "../components";
+import { Stars, TestimonialCards } from "../../components";
 
 const useTestimonialCards = () => {
 

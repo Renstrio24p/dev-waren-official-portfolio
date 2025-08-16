@@ -1,6 +1,6 @@
 // Home.ts
 import { html, useTSElements } from "@devwareng/vanilla-ts";
-import { useComponents } from "@/lib/hooks";
+import { useHomeComponents } from "@/lib/hooks";
 
 const Home = (DOM: HTMLElement, websiteName: string) => {
     document.title = websiteName;
@@ -19,10 +19,9 @@ const Home = (DOM: HTMLElement, websiteName: string) => {
         `
     );
 
-    useComponents(DOM);
-
+    useHomeComponents(DOM);
 
     return ui;
 };
 
-export default Home;
+export default Home

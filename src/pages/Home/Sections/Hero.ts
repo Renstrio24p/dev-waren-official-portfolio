@@ -18,7 +18,7 @@ export default function Hero(DOM: HTMLElement) {
         
             <!-- Left Section -->
             <div class="flex flex-col items-start justify-end px-[5%] pb-[10%] w-full md:w-2/3 h-[20em] lg:min-h-screen">
-                <div class="z-1 animate__animated animate__fadeInLeft animate__delay-1s">
+                <div class="z-1 animate__animated animate__fadeInLeft animate__delay-1s pl-[3%]">
                     <p class="mb-4">Hi, I'm</p>
                     <h1 class="text-4xl md:text-5xl lg:text-7xl font-semibold">Waren Gador</h1>
                     <p class="text-gray-500 mt-6">Fullstack Developer / UI/UX Designer</p>

@@ -16,6 +16,7 @@ export default function Navbar(DOM: HTMLElement) {
                 <nav class="hidden md:flex items-center gap-6">
                     <ul class="flex items-center gap-x-16 font-medium">
                         <li><a href="#about-me" class="hover:text-blue-600 transition-colors">About me</a></li>
+                        <li><a href="#services" class="hover:text-blue-600 transition-colors">Services</a></li>
                         <li><a href="#skills" class="hover:text-blue-600 transition-colors">Skills</a></li>
                         <li><a href="#portfolio" class="hover:text-blue-600 transition-colors">Portfolio</a></li>
                     </ul>

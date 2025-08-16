@@ -38,4 +38,4 @@ export default function Start(DOM?: HTMLElement) {
 
 }
 
-export const startHTML = Start();
+export const startHTML = Start()

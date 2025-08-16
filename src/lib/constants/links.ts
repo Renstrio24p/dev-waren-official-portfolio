@@ -3,7 +3,7 @@ const links = [
     {
         name: "Github",
         icon: "github",
-        link: "https://github.com/Renstrio24p"
+        link: "https://github.com/devwaren"
     },
     {
         name: "Facebook",
