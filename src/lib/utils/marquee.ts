@@ -14,6 +14,9 @@ const DIR_MAP: Record<Direction, { sym: string; axis: "X" | "Y" }> = {
 };
 
 const initMarqueeeSlider = (elementId: string, options: MarqueeOptions = {}): void => {
+    // 🚨 Prevent SSR errors
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+
     const container = document.getElementById(elementId);
     if (!container) return;
 
@@ -56,11 +59,11 @@ const initMarqueeeSlider = (elementId: string, options: MarqueeOptions = {}): vo
         const styleTag = document.createElement("style");
         styleTag.id = animationName;
         styleTag.textContent = `
-            @keyframes ${animationName} {
-                0% { transform: translate${dirData.axis}(0); }
-                100% { transform: translate${dirData.axis}(${dirData.sym}${originalWidth}px); }
-            }
-        `;
+      @keyframes ${animationName} {
+        0% { transform: translate${dirData.axis}(0); }
+        100% { transform: translate${dirData.axis}(${dirData.sym}${originalWidth}px); }
+      }
+    `;
         document.head.appendChild(styleTag);
     }
 
@@ -78,5 +81,10 @@ const initMarqueeeSlider = (elementId: string, options: MarqueeOptions = {}): vo
         slidesWrapper.dataset.hoverBound = "true";
     }
 };
+
+// ✅ Safe for SSR: attach only in browser
+if (typeof window !== "undefined") {
+    (window as any).initMarqueeeSlider = initMarqueeeSlider;
+}
 
 export { initMarqueeeSlider };
