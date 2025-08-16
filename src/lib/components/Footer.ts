@@ -17,14 +17,15 @@ export default function Footer(DOM: HTMLElement) {
                     <p>- John Johnson</p>
                 </div>
                 <div class="my-4 text-4xl flex gap-4">
-                    <a href="http://" class="bx bxl-facebook"></a>
-                    <a href="http://" class="bx bxl-linkedin"></a>
-                    <a href="http://" class="bx bxl-twitter"></a>
-                    <a href="http://" class="bx bxl-github"></a>
+                    <a href="http://https://www.facebook.com/rens.34dev" class="bx bxl-facebook" aria-label="facebook"></a>
+                    <a href="http://https://www.linkedin.com/in/waren-g-18505b1b7" class="bx bxl-linkedin"
+                        aria-label="linkedin"></a>
+                    <a href="https://x.com/waren_gador" class="bx bxl-twitter" aria-label="twitter"></a>
+                    <a href="http://github.com/devwaren" class="bx bxl-github" aria-label="github"></a>
                 </div>
                 <p class="text-white">Copyright &copy; 2025 Dev Waren</p>
         
-                <button class="text-center cursor-pointer" id="back">
+                <button class="text-center cursor-pointer" id="back" aria-label="back to top">
                     <i class='bx bx-chevrons-up text-4xl animate-bounce delay-75'></i>
                     <p>Back to top</p>
                 </button>

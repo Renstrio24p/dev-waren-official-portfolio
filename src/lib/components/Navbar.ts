@@ -15,17 +15,21 @@ export default function Navbar(DOM: HTMLElement) {
                 </div>
                 <nav class="hidden md:flex items-center gap-6">
                     <ul class="flex items-center gap-x-16 font-medium">
-                        <li><a href="#about-me" class="hover:text-blue-600 transition-colors">About me</a></li>
-                        <li><a href="#services" class="hover:text-blue-600 transition-colors">Services</a></li>
-                        <li><a href="#skills" class="hover:text-blue-600 transition-colors">Skills</a></li>
-                        <li><a href="#portfolio" class="hover:text-blue-600 transition-colors">Portfolio</a></li>
+                        <li><a href="#about-me" class="hover:text-blue-600 transition-colors" aria-label="About me">About me</a>
+                        </li>
+                        <li><a href="#services" class="hover:text-blue-600 transition-colors" aria-label="Services">Services</a>
+                        </li>
+                        <li><a href="#skills" class="hover:text-blue-600 transition-colors" aria-label="Skills">Skills</a></li>
+                        <li><a href="#portfolio" class="hover:text-blue-600 transition-colors"
+                                aria-label="Portfolio">Portfolio</a></li>
                     </ul>
                     <a href="#contact"
-                        class="bg-white text-black shadow px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        class="bg-white text-black shadow px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                        aria-label="Contact me">
                         Contact Me
                     </a>
                 </nav>
-                <button class="block md:hidden text-black cursor-pointer" id="menu-btn">
+                <button class="block md:hidden text-black cursor-pointer" id="menu-btn" aria-label="menu">
                     <i class="bx bx-menu text-4xl"></i>
                 </button>
             </div>
