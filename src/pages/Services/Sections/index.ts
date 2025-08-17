@@ -1,4 +1,5 @@
 
 import ServicesHero from "./ServicesHero";
+import ListofServices from "./ListofServices";
 
-export { ServicesHero };
+export { ServicesHero, ListofServices };
