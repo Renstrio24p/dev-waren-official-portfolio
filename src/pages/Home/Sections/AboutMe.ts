@@ -32,7 +32,6 @@ export default function AboutMe(DOM: HTMLElement) {
                     ${Pillar(DOM)}
                     <div class="overflow-hidden w-full">
                         ${Skills(DOM)}
-        
                     </div>
                 </div>
             </div>
