@@ -37,7 +37,7 @@ if (!isDev) {
     res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin"); // Limit referrer leakage
     res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()"); // Block sensitive APIs
     res.setHeader("Cross-Origin-Opener-Policy", "same-origin"); // Protect against XS-Leaks
-    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp"); // Required for COOP
+    res.setHeader("Cross-Origin-Embedder-Policy", "cross-origin"); // Required for COOP
     res.setHeader("Cross-Origin-Resource-Policy", "same-origin"); // Restrict cross-origin resource sharing
 
     // ✅ CSP handling

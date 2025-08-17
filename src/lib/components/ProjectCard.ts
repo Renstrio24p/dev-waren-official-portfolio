@@ -17,6 +17,8 @@ export default function ProjectCard(
 ) {
     const safeTitleId = project.title?.replace(/\s+/g, "-").toLowerCase() ?? `card-${dataId}`;
 
+    console.log(project);
+
     const ui = useTSElements(
         DOM,
         html`
@@ -27,8 +29,8 @@ export default function ProjectCard(
             <!-- Overlay Content -->
             <div
                 class="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-white
-                                       opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0
-                                       transition-all duration-500 ease-out pointer-events-none group-hover:pointer-events-auto">
+                                                       opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0
+                                                       transition-all duration-500 ease-out pointer-events-none group-hover:pointer-events-auto">
         
                 <h3 class="font-semibold text-lg mb-2 animate__animated animate__fadeInUp animate__delay-200ms">
                     ${project.title}

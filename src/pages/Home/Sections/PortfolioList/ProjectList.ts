@@ -26,7 +26,7 @@ export default function ProjectList(DOM: HTMLElement, dataId: number) {
             </div>
         </div>
         <div id="projects-container" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-16"></div>
-    `
+        `
     );
 
     init();
