@@ -2,9 +2,10 @@
 import { html } from '@devwareng/vanilla-ts';
 import { testimonials } from '../constants';
 import { Stars } from './Stars';
+import { mapper } from '../func';
 
 export default function TestimonialCards() {
-    return testimonials.map((e, i) => html`
+    return mapper(testimonials.map((e, i) => (html`
         <div class="p-6 animate__animated animate__fadeInUp" style="animation-delay: ${i * 0.2}s">
             <p class="text-gray-600">${e.message}</p>
             <div class="flex flex-col sm:flex-row justify-between md:items-center gap-2">
@@ -21,5 +22,5 @@ export default function TestimonialCards() {
                 </div>
             </div>
         </div>
-    `);
+    `)))
 }

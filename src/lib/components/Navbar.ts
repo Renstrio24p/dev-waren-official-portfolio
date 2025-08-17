@@ -1,9 +1,13 @@
-import { html, useTSElements, useTSEvent, useTSSelect } from '@devwareng/vanilla-ts';
-import { useScrollNavbar, useSidebarToggle } from '@/lib/hooks';
+import { html, useTSElements } from '@devwareng/vanilla-ts';
+import { useNavbarLinks, useNavbarSettings } from '@/lib/hooks';
 
-import Sidebar from './Sidebar';
 
 export default function Navbar(DOM: HTMLElement) {
+
+    // top hook
+    const { links } = useNavbarLinks();
+
+    // UI Render
     const ui = useTSElements(
         DOM,
         html`
@@ -15,13 +19,7 @@ export default function Navbar(DOM: HTMLElement) {
                 </div>
                 <nav class="hidden md:flex items-center gap-6">
                     <ul class="flex items-center gap-x-16 font-medium">
-                        <li><a href="#about-me" class="hover:text-blue-600 transition-colors" aria-label="About me">About me</a>
-                        </li>
-                        <li><a href="#services" class="hover:text-blue-600 transition-colors" aria-label="Services">Services</a>
-                        </li>
-                        <li><a href="#skills" class="hover:text-blue-600 transition-colors" aria-label="Skills">Skills</a></li>
-                        <li><a href="#portfolio" class="hover:text-blue-600 transition-colors"
-                                aria-label="Portfolio">Portfolio</a></li>
+                        ${links}
                     </ul>
                     <a href="#contact"
                         class="bg-white text-black shadow px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -38,24 +36,8 @@ export default function Navbar(DOM: HTMLElement) {
     `
     );
 
-    const nav = useTSSelect<HTMLElement>('#navbar')!;
-    useScrollNavbar(nav);
-
-    // Mount sidebar
-    const sidebarContainer = DOM.querySelector('#sidebar-container')!;
-    const sidebarToggle = useSidebarToggle('sidebar', 'menu-btn');
-    Sidebar(sidebarContainer as HTMLElement, () => {
-        sidebarToggle?.hideSidebar();
-    });
-
-    // Sidebar logic via hook
-    useSidebarToggle('sidebar', 'menu-btn');
-
-    // Logo click → scroll to top
-    useTSEvent('logo-app', 'click', () => {
-        if (window.location.pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
-        else window.location.href = "/";
-    });
+    // bottom hook 
+    useNavbarSettings(DOM);
 
     return ui;
 }

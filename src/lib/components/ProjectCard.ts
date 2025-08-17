@@ -1,5 +1,6 @@
 import 'animate.css';
 import { html, useTSElements } from '@devwareng/vanilla-ts'
+import { useProjectCards } from '../hooks';
 
 type Project = {
     title: string,
@@ -16,6 +17,8 @@ export default function ProjectCard(
     dataId: number
 ) {
     const safeTitleId = project.title?.replace(/\s+/g, "-").toLowerCase() ?? `card-${dataId}`;
+
+    const { projectList } = useProjectCards(project);
 
     const ui = useTSElements(
         DOM,
@@ -36,9 +39,7 @@ export default function ProjectCard(
                 </p>
                 <div class="flex flex-wrap gap-2 justify-center animate__animated animate__fadeInUp animate__delay-600ms"
                     id=${safeTitleId}>
-                    ${project.stacks?.map((stack) => html`
-                    <span class="bg-white text-black text-xs px-2 py-1 rounded">${stack}</span>
-                    `).join('')}
+                    ${projectList}
                 </div>
             </div>
         </a>

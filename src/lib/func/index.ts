@@ -1,0 +1,1 @@
+export { mapper } from "./mapper.func";
