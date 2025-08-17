@@ -3,12 +3,12 @@ import Pillar from "./Pillar";
 import Info from "./Info";
 import Header from "./Header";
 import Stacks from "./Stacks";
-import NavContainer from "./NavContainer";
 import Footer from "./Footer";
 import ProjectCard from "./ProjectCard";
 import LinkBlock from "./LinkBlock";
 import Title from "./Title";
 import TestimonialCards from "./TestimonialCards";
 import { Stars } from "./Stars";
+import TimeLineCard from "./TimeLineCard";
 
-export { Navbar, NavContainer, Pillar, Info, Header, Stacks, Footer, ProjectCard, LinkBlock, Title, TestimonialCards, Stars };
+export { Navbar, Pillar, Info, Header, Stacks, Footer, ProjectCard, LinkBlock, Title, TestimonialCards, Stars, TimeLineCard };
