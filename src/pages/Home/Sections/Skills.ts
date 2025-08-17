@@ -12,7 +12,7 @@ export default function Skills(DOM: HTMLElement) {
         <section class="w-full flex flex-col relative animate__animated animate__fadeInUp animate__slow overflow-hidden pt-32"
             id="skills">
             <div class="w-full flex items-center justify-center">
-                ${Header(DOM, "Skills")}
+                ${Header("Skills")}
             </div>
             <div class="py-16 w-full">
                 <p class="tracking-widest font-semibold text-left uppercase text-lg md:text-xl lg:text-2xl">
