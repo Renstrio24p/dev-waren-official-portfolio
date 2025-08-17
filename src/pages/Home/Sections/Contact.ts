@@ -15,7 +15,7 @@ export default function Contact(DOM: HTMLElement) {
             <div class="absolute bg-gray-50/95 bg-center bg-cover w-full z-[-1] h-screen"></div>
         
             <div class="max-w-screen-2xl mx-auto py-16 flex flex-col gap-8 items-center">
-                ${Header(DOM, "Contact")}
+                ${Header("Contact")}
         
                 <p class="animate__animated animate__fadeIn animate__delay-1s px-4">
                     Shall we work together? Pop me a message, and I’ll be in touch before you can say “cuppa tea.”

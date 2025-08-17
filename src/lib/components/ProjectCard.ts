@@ -1,5 +1,5 @@
 import 'animate.css';
-import { html, useTSElements } from '@devwareng/vanilla-ts'
+import { html } from '@devwareng/vanilla-ts'
 import { useProjectCards } from '../hooks';
 
 type Project = {
@@ -12,17 +12,16 @@ type Project = {
 }
 
 export default function ProjectCard(
-    DOM: HTMLElement,
     project: Partial<Project>,
     dataId: number
-) {
-    const safeTitleId = project.title?.replace(/\s+/g, "-").toLowerCase() ?? `card-${dataId}`;
+): string {
+    const safeTitleId =
+        project.title?.replace(/\s+/g, "-").toLowerCase() ?? `card-${dataId}`;
 
     const { projectList } = useProjectCards(project);
 
-    const ui = useTSElements(
-        DOM,
-        html`
+    // return sanitized HTML string
+    return html`
         <a class="group relative overflow-hidden shadow-lg block" id="card-${dataId}" href=${project.url}>
             <img src=${project.image} alt=${project.title}
                 class="w-full h-auto transition-transform duration-500 group-hover:scale-110" />
@@ -44,7 +43,5 @@ export default function ProjectCard(
             </div>
         </a>
         `
-    );
 
-    return ui;
 }

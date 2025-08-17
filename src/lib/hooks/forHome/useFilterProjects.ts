@@ -1,12 +1,11 @@
 import { ProjectCard } from "../../components";
 import { tabs, projects } from "../../constants";
 
-
 const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
     const updateProjects = (filter?: boolean) => {
         const container = DOM.querySelector('#projects-container') as HTMLElement;
         if (!container) return;
-        container.textContent = '';
+        container.innerHTML = '';
 
         const filtered = filter === true
             ? projects.filter(p => p.fullStack)
@@ -15,9 +14,9 @@ const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
                 : projects;
 
         filtered.forEach(project => {
-            container.innerHTML += ProjectCard(container, project, dataId);
+            container.innerHTML += ProjectCard(project, dataId);
         });
-    }
+    };
 
     const setActive = (activeId: string) => {
         tabs.forEach(tab => {
@@ -33,7 +32,7 @@ const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
                 line.classList.replace('h-[2px]', 'h-[1px]');
             }
         });
-    }
+    };
 
     const selectFilterProjects = () => {
         tabs.forEach(tab => {
@@ -45,16 +44,15 @@ const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
                 setActive(tab.id);
             });
         });
-    }
+    };
 
-    // Initialize after DOM is rendered
     const init = () => {
         updateProjects();
         setActive('allproject');
         selectFilterProjects();
-    }
+    };
 
     return { init };
-}
+};
 
-export { useFilterProjects }
+export { useFilterProjects };

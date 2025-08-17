@@ -61,10 +61,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-3.0.4.tgz#333fedabc3fd1a8e5d0100013731cf19e6a8c5d3"
   integrity sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==
 
-"@devwareng/vanilla-ts@^1.2.49":
-  version "1.2.49"
-  resolved "https://registry.yarnpkg.com/@devwareng/vanilla-ts/-/vanilla-ts-1.2.49.tgz#17bec58eaddace3d7f9b161c6b7ba80cbc5ec6da"
-  integrity sha512-GfGbZJ0f68uHKb5InQSbqtIZUNw4rgdaQdDp89UGAJCRrg+MeQp65yem9RWXWr66+dRiggpGY0LyEBQQNk5d4g==
+"@devwareng/vanilla-ts@^1.2.53":
+  version "1.2.53"
+  resolved "https://registry.yarnpkg.com/@devwareng/vanilla-ts/-/vanilla-ts-1.2.53.tgz#18b8fe51bf21c18b57cc703a2b717eba483621fb"
+  integrity sha512-14YDjGIL6G02b+KUrF1e9+Gd4cN0C59Xc7u1ZWp4Z1eudDQsku02r1LC8gtHnQqWnPOMCSZCWQdzlhCT6PGRtw==
   dependencies:
     dompurify "^3.2.6"
     js-cookie "^3.0.5"

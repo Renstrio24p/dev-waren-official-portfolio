@@ -17,7 +17,7 @@ export default function Portfolio(DOM: HTMLElement, dataId: number) {
                 <div class="absolute bg-[url('/nature.webp')] bg-fixed bg-cover bg-center w-full h-full max-h-fit"></div>
                 <div class="absolute bg-gray-50/80 bg-cover bg-center w-full h-full max-h-fit"></div>
                 <div class="relative flex flex-col">
-                    ${Header(DOM, "Portfolio")}
+                    ${Header("Portfolio")}
                 </div>
             </div>
         

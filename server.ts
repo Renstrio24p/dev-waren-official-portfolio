@@ -28,7 +28,9 @@ if (!isDev) {
       "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com",
       "object-src 'none'",
       "base-uri 'self'",
-      "form-action 'self'"
+      "form-action 'self'",
+      "require-trusted-types-for 'script'",              // ✅ enforce Trusted Types
+      "trusted-types dompurify default",                 // ✅ allow DOMPurify + default policy
     ].join("; ");
 
     // ✅ Security headers

@@ -14,7 +14,7 @@ export default function AboutMe(DOM: HTMLElement) {
             <div class="absolute bg-gray-50/95 bg-cover bg-center w-full h-screen"></div>
             <div class="relative flex flex-col">
                 <div class="max-w-screen-2xl mx-auto py-16 flex flex-col gap-16 items-center">
-                    ${Header(DOM, "About Me")}
+                    ${Header("About Me")}
                     <div class="text-center max-w-4xl">
                         <p>
                             I'm happy to share my experience as a Full Stack Web Developer for 4 years of experience in
