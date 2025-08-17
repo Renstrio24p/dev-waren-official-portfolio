@@ -1,10 +1,8 @@
 
 import { html } from '@devwareng/vanilla-ts'
 import { mapper } from '../func'
-import { timeline } from '../constants/timeline'
+import { timeline } from '../constants'
 import { useUniqueId } from '../hooks'
-
-
 
 export default function TimeLineCard() {
     return mapper(
