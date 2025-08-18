@@ -19,3 +19,4 @@ export { useProjectCards } from "./forHome/useProjectCards"
 export { useNavbarLinks } from "./forNavbar/useNavbarLinks";
 export { useNavbarSettings } from "./forNavbar/useNavbarSettings";
 export { useNavbarScroll } from "./forNavbar/useNavbarScroll";
+export { useSSRHydration } from "./forMain/useSSRHydration"

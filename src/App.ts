@@ -2,15 +2,12 @@
 import "./index.css"
 import "boxicons/css/boxicons.min.css"
 import { html, useTSComponent, useTSElements, useTSMetaData } from '@devwareng/vanilla-ts';
-import { useMainComponent } from "./lib/hooks";
+import { useMainComponent, useSSRHydration } from "./lib/hooks";
 import { Router } from "./routes";
 
 export default function Start(DOM?: HTMLElement) {
 
-    if (typeof window === "undefined") return;
-
-    const isDOM = DOM || document.body;
-
+    const { isDOM } = useSSRHydration(DOM!)!;
 
     useTSMetaData({
         name: 'Dev Waren Portfolio',
