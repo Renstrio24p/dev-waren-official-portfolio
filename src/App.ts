@@ -7,7 +7,9 @@ import { Router } from "./routes";
 
 export default function Start(DOM?: HTMLElement) {
 
-    const { isDOM } = useSSRHydration(DOM!)!;
+    const { isDOM } = useSSRHydration(DOM);
+
+    if (!isDOM) return
 
     useTSMetaData({
         name: 'Dev Waren Portfolio',
@@ -18,7 +20,7 @@ export default function Start(DOM?: HTMLElement) {
     const title = "Dev Waren"
 
     const ui = useTSElements(
-        isDOM,
+        isDOM!,
         html`
             <div id='nav-container'></div>
             <main id='router' class='main scroll-smooth'></main>
@@ -26,8 +28,8 @@ export default function Start(DOM?: HTMLElement) {
         `
     );
 
-    useMainComponent(isDOM, title);
-    useTSComponent("router", isDOM, Router, title);
+    useMainComponent(isDOM!, title);
+    useTSComponent("router", isDOM!, Router, title);
 
     return ui
 
