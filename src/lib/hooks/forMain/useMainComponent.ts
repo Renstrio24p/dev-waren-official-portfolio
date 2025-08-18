@@ -1,4 +1,4 @@
-import { useTSAnchorMount, useTSCollection } from "@devwareng/vanilla-ts"
+import { useTSAnchorMount, useTSCollection, useTSComponent } from "@devwareng/vanilla-ts"
 import { Footer, Navbar } from "../../components"
 import { useVercelInsights } from "../vercel/useVercelInsights"
 import { Router } from "@/routes"
@@ -9,18 +9,17 @@ const useMainComponent: ComponentFunction = (isDOM, title) => {
 
     const sections = [
         "nav-container",
-        "router",
         "footer-container"
     ]
 
     const components = [
         Navbar,
-        Router,
         Footer
     ]
 
     useVercelInsights();
-    useTSCollection(sections, isDOM, components, [title])
+    useTSComponent("router", isDOM, Router, title);
+    useTSCollection(sections, isDOM, components)
     useTSAnchorMount();
 
     if (window.trustedTypes && !window.trustedTypes.getPolicy?.("default")) {
