@@ -1,11 +1,10 @@
-import { useTSAnchorMount, useTSCollection, useTSComponent } from "@devwareng/vanilla-ts"
+import { useTSAnchorMount, useTSCollection } from "@devwareng/vanilla-ts"
 import { Footer, Navbar } from "../../components"
 import { useVercelInsights } from "../vercel/useVercelInsights"
-import { Router } from "@/routes"
 import DOMPurify from 'dompurify';
 import { ComponentFunction } from "@/lib/types/Functions";
 
-const useMainComponent: ComponentFunction = (isDOM, title) => {
+const useMainComponent: ComponentFunction = (isDOM) => {
 
     const sections = [
         "nav-container",
@@ -18,7 +17,6 @@ const useMainComponent: ComponentFunction = (isDOM, title) => {
     ]
 
     useVercelInsights();
-    useTSComponent("router", isDOM, Router, title);
     useTSCollection(sections, isDOM, components)
     useTSAnchorMount();
 
