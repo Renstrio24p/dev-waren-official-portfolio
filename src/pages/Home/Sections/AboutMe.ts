@@ -9,11 +9,11 @@ export default function AboutMe(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="relative px-4 py-32" id="about-me">
+        <section class="relative px-4 pb-8 pt-16" id="about-me">
             <div class="absolute bg-[url('/bg.webp')] bg-fixed bg-cover bg-center w-full min-h-screen max-h-fit"></div>
             <div class="absolute bg-gray-50/95 bg-cover bg-center w-full h-screen"></div>
             <div class="relative flex flex-col">
-                <div class="max-w-screen-2xl mx-auto py-16 flex flex-col gap-16 items-center">
+                <div class="max-w-screen-2xl mx-auto py-8 flex flex-col gap-16 items-center">
                     ${Header("About Me")}
                     <div class="text-center max-w-4xl">
                         <p>

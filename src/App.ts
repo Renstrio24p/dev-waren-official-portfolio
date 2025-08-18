@@ -8,8 +8,7 @@ import { Router } from "./routes";
 export default function Start(DOM?: HTMLElement) {
 
     const { isDOM } = useSSRHydration(DOM);
-
-    if (!isDOM) return
+    if (!isDOM) return null;
 
     useTSMetaData({
         name: 'Dev Waren Portfolio',
@@ -32,7 +31,6 @@ export default function Start(DOM?: HTMLElement) {
     useTSComponent("router", isDOM!, Router, title);
 
     return ui
-
 }
 
 export const startHTML = Start()

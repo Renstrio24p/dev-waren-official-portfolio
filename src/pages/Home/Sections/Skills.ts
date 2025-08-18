@@ -14,7 +14,7 @@ export default function Skills(DOM: HTMLElement) {
             <div class="w-full flex items-center justify-center">
                 ${Header("Skills")}
             </div>
-            <div class="py-16 w-full">
+            <div class="pt-16 w-full">
                 <p class="tracking-widest font-semibold text-left uppercase text-lg md:text-xl lg:text-2xl">
                     I'm using the following tools:
                 </p>
