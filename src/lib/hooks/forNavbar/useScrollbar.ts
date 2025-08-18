@@ -1,7 +1,8 @@
 // hooks/useScrollNavbar.ts
+import { ComponentFunction } from '@/lib/types/Functions';
 import { animate, scroll } from 'motion';
 
-export function useScrollNavbar(navbar: HTMLElement) {
+const useScrollNavbar: ComponentFunction = (navbar) => {
     if (!navbar) return () => { };
 
     let isScrolled = true; // default to "scrolled" style
@@ -39,3 +40,5 @@ export function useScrollNavbar(navbar: HTMLElement) {
         stopScroll();
     };
 }
+
+export { useScrollNavbar }

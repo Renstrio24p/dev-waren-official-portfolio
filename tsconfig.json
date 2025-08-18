@@ -28,6 +28,7 @@
   },
   "include": [
     "src",
+    "**/*.d.ts",
     "server.ts"
   ]
 }

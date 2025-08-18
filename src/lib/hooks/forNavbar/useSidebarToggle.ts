@@ -1,8 +1,9 @@
+import { SidebarFunction } from '@/lib/types/Functions';
 import { useTSEvent, useTSSelect } from '@devwareng/vanilla-ts';
 
-export const useSidebarToggle = (
-    sidebarId: string,
-    menuBtnId: string
+export const useSidebarToggle: SidebarFunction = (
+    sidebarId,
+    menuBtnId
 ) => {
     const sidebar = useTSSelect<HTMLElement>(`#${sidebarId}`)!;
     const menuBtn = useTSSelect<HTMLElement>(`#${menuBtnId}`)!;
