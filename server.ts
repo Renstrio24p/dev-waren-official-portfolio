@@ -1,23 +1,128 @@
-import fs from 'node:fs/promises'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import express from 'express'
-import type { ViteDevServer } from 'vite'
-import crypto from 'crypto' // added for nonce
+// server.ts
+import fs from "node:fs/promises"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
+import express from "express"
+import type { ViteDevServer } from "vite"
+import crypto from "node:crypto"
+import dns from "node:dns/promises"
+import net from "node:net"
+import { URL } from "node:url"
 
+// -----------------------------------------------------------------------------
 // Constants
+// -----------------------------------------------------------------------------
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const isDev = process.env.NODE_ENV !== 'production'
-const port = process.env.PORT || 5173
-const base = process.env.BASE || '/'
+const isDev = process.env.NODE_ENV !== "production"
+const port = Number(process.env.PORT) || 5173
+const base = process.env.BASE || "/"
 
-// Create Express app
+// -----------------------------------------------------------------------------
+// Type Augmentations
+// -----------------------------------------------------------------------------
+declare global {
+  namespace Express {
+    interface Locals {
+      nonce: string
+    }
+  }
+  interface GlobalThis {
+    __rawFetch__?: typeof fetch
+  }
+}
+
+// -----------------------------------------------------------------------------
+// SSRF GUARD (allow ONLY self)
+// -----------------------------------------------------------------------------
+
+async function isLoopbackHost(hostname: string): Promise<boolean> {
+  const directIP = net.isIP(hostname) ? hostname : null
+  const candidates = directIP
+    ? [directIP]
+    : (await dns.lookup(hostname, { all: true })).map((r) => r.address)
+  return candidates.every((ip) => ip === "127.0.0.1" || ip === "::1")
+}
+
+// Use the existing fetch type to avoid DOM/Undici imports
+type FetchFn = typeof fetch
+type FetchInput = Parameters<FetchFn>[0]
+type FetchInit = Parameters<FetchFn>[1]
+type FetchReturn = ReturnType<FetchFn>
+
+/**
+ * Build an absolute URL from input (string | URL | Request-like with .url)
+ */
+function toAbsoluteURL(
+  input: FetchInput | { url: string },
+  baseURL = `http://localhost:${port}`
+): URL {
+  if (typeof input === "string") return new URL(input, baseURL)
+  // URL instance
+  if (input instanceof URL) return input
+  // Request-like (avoid referencing Request type directly to keep types portable)
+  const maybe = input as { url?: unknown }
+  if (maybe && typeof maybe.url === "string") return new URL(maybe.url, baseURL)
+  throw new TypeError("Unsupported fetch input for SSRF guard")
+}
+
+/**
+ * Self-only fetch: allows only http(s) to 127.0.0.1 / ::1 / localhost, same port.
+ */
+async function safeFetch(input: FetchInput, init?: FetchInit): FetchReturn {
+  const u = toAbsoluteURL(input)
+
+  if (u.protocol !== "http:" && u.protocol !== "https:") {
+    throw new TypeError("Blocked by SSRF guard: non-http(s) scheme")
+  }
+
+  const host = u.hostname.toLowerCase()
+  const isLocalhostName = host === "localhost"
+  const ok = isLocalhostName ? true : await isLoopbackHost(host)
+  if (!ok) throw new Error(`Blocked by SSRF guard: outbound request to ${u.hostname}`)
+
+  // Only allow our current server port (and empty means default port, which we disallow)
+  const allowedPorts = new Set([String(port), ""])
+  if (!allowedPorts.has(String(u.port || ""))) {
+    throw new Error(`Blocked by SSRF guard: disallowed port ${u.port}`)
+  }
+  // @ts-ignore
+  return globalThis.__rawFetch__!(input, init)
+}
+
+// Save original fetch and override with SSRF guard (guarded for HMR)
+if (typeof globalThis.fetch !== "function") {
+  throw new Error("Global fetch is not available in this Node version.")
+}
+// @ts-ignore
+if (!globalThis.__rawFetch__) {
+  // @ts-ignore
+  globalThis.__rawFetch__ = globalThis.fetch
+}
+globalThis.fetch = safeFetch as typeof fetch
+
+// -----------------------------------------------------------------------------
+// Minimal HTML escape helper
+// -----------------------------------------------------------------------------
+function escapeHTML(s?: string): string {
+  if (!s) return ""
+  return s
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;")
+}
+
+// -----------------------------------------------------------------------------
+// Express app
+// -----------------------------------------------------------------------------
 const app = express()
+app.set("trust proxy", false)
 
 if (!isDev) {
   app.use((req, res, next) => {
-    const nonce = crypto.randomBytes(16).toString("base64");
-    res.locals.nonce = nonce;
+    const nonce = crypto.randomBytes(16).toString("base64")
+    res.locals.nonce = nonce
 
     const csp = [
       "default-src 'self'",
@@ -29,78 +134,101 @@ if (!isDev) {
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
-    ].join("; ");
+      "frame-ancestors 'none'",
+    ].join("; ")
 
-    // ✅ Security headers
-    res.setHeader("X-Frame-Options", "DENY"); // Prevent clickjacking
-    res.setHeader("X-Content-Type-Options", "nosniff"); // Block MIME type sniffing
-    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin"); // Limit referrer leakage
-    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()"); // Block sensitive APIs
-    res.setHeader("Cross-Origin-Opener-Policy", "same-origin"); // Protect against XS-Leaks
-    res.setHeader("Cross-Origin-Embedder-Policy", "cross-origin"); // Required for COOP
-    res.setHeader("Cross-Origin-Resource-Policy", "same-origin"); // Restrict cross-origin resource sharing
+    res.setHeader("X-Frame-Options", "DENY")
+    res.setHeader("X-Content-Type-Options", "nosniff")
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin")
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin")
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp")
+    res.setHeader("Cross-Origin-Resource-Policy", "same-origin")
 
-    // ✅ CSP handling
-    const ua = req.headers['user-agent'] || "";
+    const ua = req.headers["user-agent"] || ""
     if (/Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua)) {
-      res.setHeader("Content-Security-Policy-Report-Only", csp);
+      res.setHeader("Content-Security-Policy-Report-Only", csp)
     } else {
-      res.setHeader("Content-Security-Policy", csp);
+      res.setHeader("Content-Security-Policy", csp)
     }
 
-    next();
-  });
+    next()
+  })
 }
 
+// -----------------------------------------------------------------------------
+// Proxy guard route
+// -----------------------------------------------------------------------------
+app.use(["/proxy", "/api/proxy"], async (req, res) => {
+  try {
+    const target = String(req.query.url || "")
+    if (!target) return res.status(400).json({ error: "Missing url" })
 
+    const u = new URL(target, `http://localhost:${port}`)
+    if (!(await isLoopbackHost(u.hostname))) {
+      return res.status(403).json({ error: "Blocked by SSRF guard" })
+    }
 
+    const r = await safeFetch(u.toString())
+    const body = await r.text()
+    res.status(r.status).send(body)
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Proxy error"
+    res.status(500).json({ error: message })
+  }
+})
 
-// Dev server (Vite) or static file handler
+// -----------------------------------------------------------------------------
+// Vite (dev) or static (prod)
+// -----------------------------------------------------------------------------
 let vite: ViteDevServer | undefined
 
 if (isDev) {
-  const { createServer } = await import('vite')
+  const { createServer } = await import("vite")
   vite = await createServer({
     server: { middlewareMode: true },
-    appType: 'custom',
+    appType: "custom",
     base,
   })
   app.use(vite.middlewares)
 } else {
-  const compression = (await import('compression')).default
-  const sirv = (await import('sirv')).default
+  const compression = (await import("compression")).default
+  const sirv = (await import("sirv")).default
   app.use(compression())
-  app.use(base, sirv(path.resolve(__dirname, 'dist/client'), { extensions: [] }))
+  app.use(base, sirv(path.resolve(__dirname, "dist/client"), { extensions: [] }))
 }
 
-// HTML rendering
-app.use('*all', async (req, res) => {
+// -----------------------------------------------------------------------------
+// SSR HTML rendering
+// -----------------------------------------------------------------------------
+app.use("*all", async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, '')
+    const url = req.originalUrl.replace(base, "")
 
     let template: string
     let render: (url: string, nonce: string) => Promise<{ html: string; head: string }>
 
     if (isDev && vite) {
-      template = await fs.readFile(path.resolve(__dirname, 'index.html'), 'utf-8')
+      template = await fs.readFile(path.resolve(__dirname, "index.html"), "utf-8")
       template = await vite.transformIndexHtml(url, template)
-      render = (await vite.ssrLoadModule('/src/entry-server.ts')).render
+      render = (await vite.ssrLoadModule("/src/entry-server.ts")).render
     } else {
-      template = await fs.readFile(path.resolve(__dirname, 'dist/client/index.html'), 'utf-8')
-      const mod = await import(path.resolve(__dirname, 'dist/server/entry-server.js'))
+      template = await fs.readFile(path.resolve(__dirname, "dist/client/index.html"), "utf-8")
+      const mod = await import(path.resolve(__dirname, "dist/server/entry-server.js"))
       render = mod.render as typeof render
     }
 
-    // Pass nonce to render function in case your app injects inline scripts
     const rendered = await render(url, res.locals.nonce)
 
-    const html = template
-      .replace(`<!--app-head-->`, rendered.head ?? '')
-      .replace(`<!--app-html-->`, rendered.html ?? '')
-      // Optional: inject nonce into all inline scripts automatically
-      .replace(/<script(?![^>]*src)/g, `<script nonce="${res.locals.nonce}"`)
+    const safeHead = escapeHTML(rendered.head)
+    const appHtml = rendered.html ?? ""
 
-    res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
+    const html = template
+      .replace(`<!--app-head-->`, safeHead ?? "")
+      .replace(`<!--app-html-->`, appHtml)
+      .replace(/<script(?![^>]*\bsrc\b)/g, `<script nonce="${res.locals.nonce}"`)
+
+    res.status(200).set({ "Content-Type": "text/html" }).send(html)
   } catch (e) {
     vite?.ssrFixStacktrace?.(e as Error)
     console.error((e as Error).stack)
@@ -108,7 +236,9 @@ app.use('*all', async (req, res) => {
   }
 })
 
+// -----------------------------------------------------------------------------
 // Start server
+// -----------------------------------------------------------------------------
 app.listen(port, () => {
-  console.log(`✅ Server started at http://localhost:${port} (${isDev ? 'dev' : 'prod'})`)
+  console.log(`✅ Server started at http://localhost:${port} (${isDev ? "dev" : "prod"})`)
 })

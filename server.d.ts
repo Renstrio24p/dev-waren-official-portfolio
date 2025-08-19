@@ -21,3 +21,9 @@ declare global {
         trustedTypes?: TrustedTypePolicyFactory;
     }
 }
+
+declare global {
+    interface GlobalThis {
+        __rawFetch__?: typeof fetch
+    }
+}
