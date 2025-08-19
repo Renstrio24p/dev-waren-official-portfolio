@@ -30,7 +30,7 @@ if (!isDev) {
       "base-uri 'self'",
       "form-action 'self'",
       "require-trusted-types-for 'script'",              // ✅ enforce Trusted Types
-      "trusted-types dompurify default",                 // ✅ allow DOMPurify + default policy
+      "trusted-types dompurify zod default",                 // ✅ allow DOMPurify + default policy
     ].join("; ");
 
     // ✅ Security headers
