@@ -29,8 +29,7 @@ if (!isDev) {
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
-      "require-trusted-types-for 'script'",              // ✅ enforce Trusted Types
-      "trusted-types dompurify zod default",
+
     ].join("; ");
 
     // ✅ Security headers
