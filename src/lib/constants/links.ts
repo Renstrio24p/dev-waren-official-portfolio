@@ -1,5 +1,6 @@
+import { Link } from "@/lib/types"
 
-const links = [
+const links: Link[] = [
     {
         name: "Github",
         icon: "github",
@@ -18,7 +19,7 @@ const links = [
     {
         name: "Gmail",
         icon: "gmail",
-        link: "waren.gador15@gmail.com"
+        link: "https://mailto:waren.gador15@gmail.com"
     }
 ]
 

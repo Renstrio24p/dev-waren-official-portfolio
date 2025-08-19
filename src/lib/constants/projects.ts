@@ -1,12 +1,5 @@
-type Project = {
-    title: string,
-    image: string,
-    stacks: string[],
-    url: `https://${string}`,
-    desc: string,
-    fullStack: boolean,
-    designed: boolean
-}
+import { Project } from "@/lib/types"
+
 
 const projects: Partial<Project>[] = [
     {

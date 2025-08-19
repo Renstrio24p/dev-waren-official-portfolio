@@ -1,8 +1,5 @@
-type Tab = {
-    id: string;
-    label: string;
-    filter?: boolean | undefined;
-}
+import { Tab } from "@/lib/types";
+
 
 const tabs: Tab[] = [
     { id: 'allproject', label: 'All', filter: undefined },

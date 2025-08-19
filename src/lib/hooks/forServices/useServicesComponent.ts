@@ -1,7 +1,8 @@
+import { HookFunction } from "@/lib/types";
 import { ListofServices, ServicesHero } from "@/pages/Services/Sections";
 import { useTSCollection } from "@devwareng/vanilla-ts";
 
-const useServicesComponent = (DOM: HTMLElement): void => {
+const useServicesComponent: HookFunction = (DOM) => {
 
     const sections = [
         "services-hero",

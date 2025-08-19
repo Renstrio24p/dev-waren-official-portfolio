@@ -1,7 +1,7 @@
 // components/TestimonialCards.ts
 import { html } from '@devwareng/vanilla-ts';
 import { testimonials } from '../constants';
-import { Stars } from './Stars';
+import Stars from './Stars';
 import { mapper } from '../func';
 import { useUniqueId } from '../hooks';
 

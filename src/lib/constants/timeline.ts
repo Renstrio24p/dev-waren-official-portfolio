@@ -1,10 +1,4 @@
-
-type Timeline = {
-    year: number,
-    bg?: string,
-    transition: string,
-    desc: string[]
-}
+import { Timeline } from "@/lib/types"
 
 const timeline: Timeline[] = [
     {

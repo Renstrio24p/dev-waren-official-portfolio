@@ -1,9 +1,10 @@
+import { Sections } from "@/lib/types"
 import { AboutHero, Carousel, ClosingNote, PersonalLife, ProfessionalLife, Testimonials, WorkGallery } from "@/pages/AboutMe/Sections"
 import { useTSCollection } from "@devwareng/vanilla-ts"
 
 const useAboutComponents = (DOM: HTMLElement) => {
 
-    const sections = [
+    const sections: Sections = [
         "about-hero",
         "carousel",
         "professional-life",
@@ -13,7 +14,7 @@ const useAboutComponents = (DOM: HTMLElement) => {
         "testimonials"
     ]
 
-    const components = [
+    const components: Function[] = [
         AboutHero,
         Carousel,
         ProfessionalLife,

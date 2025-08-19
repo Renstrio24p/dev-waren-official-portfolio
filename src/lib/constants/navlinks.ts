@@ -1,5 +1,6 @@
+import { NavLink } from "@/lib/types"
 
-const navlinks = [
+const navlinks: NavLink[] = [
     {
         name: "About me",
         link: "#about-me"

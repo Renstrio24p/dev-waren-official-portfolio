@@ -1,4 +1,6 @@
-const useSSRHydration = (DOM?: HTMLElement) => {
+import { HookFunction } from "@/lib/types";
+
+const useSSRHydration: HookFunction = (DOM) => {
     if (typeof window === "undefined") {
         return { isDOM: null };
     }

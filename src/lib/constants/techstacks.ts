@@ -1,5 +1,6 @@
+import { TechStack } from "@/lib/types"
 
-const techstacks = [
+const techstacks: TechStack[] = [
     {
         title: "HTML5",
         image: "html5.webp",

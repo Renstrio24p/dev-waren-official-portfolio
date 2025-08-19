@@ -1,6 +1,9 @@
 
 let pillarCounter = 0;
-const useUniqueId = (): { dataId: number } => {
+
+type UniqueId = () => { dataId: number };
+
+const useUniqueId: UniqueId = () => {
     pillarCounter++;
     const dataId = pillarCounter;
 

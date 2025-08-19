@@ -8,7 +8,8 @@ import ProjectCard from "./ProjectCard";
 import LinkBlock from "./LinkBlock";
 import Title from "./Title";
 import TestimonialCards from "./TestimonialCards";
-import { Stars } from "./Stars";
+import Stars from "./Stars";
 import TimeLineCard from "./TimeLineCard";
+import Sidebar from "./Sidebar";
 
-export { Navbar, Pillar, Info, Header, Stacks, Footer, ProjectCard, LinkBlock, Title, TestimonialCards, Stars, TimeLineCard };
+export { Navbar, Pillar, Info, Header, Stacks, Footer, ProjectCard, LinkBlock, Title, TestimonialCards, Stars, TimeLineCard, Sidebar };

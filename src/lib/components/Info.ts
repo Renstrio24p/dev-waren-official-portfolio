@@ -7,8 +7,6 @@ type Details = {
 }
 
 export default function Info(DOM: HTMLElement, detail: Details) {
-
-
     const ui = useTSElements(
         DOM,
         html`

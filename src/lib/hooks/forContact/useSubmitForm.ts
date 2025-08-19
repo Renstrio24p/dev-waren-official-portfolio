@@ -1,10 +1,4 @@
-
-export interface ContactFormValues {
-    name: string;
-    email: string;
-    subject?: string;
-    message: string;
-}
+import { ContactFormValues } from "@/lib/types";
 
 const useSubmitForm = () => {
     const onSubmit = async (_values: ContactFormValues) => {

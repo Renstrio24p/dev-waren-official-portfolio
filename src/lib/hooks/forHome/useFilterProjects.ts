@@ -1,7 +1,8 @@
+import { HookFunction } from "@/lib/types";
 import { ProjectCard } from "../../components";
 import { tabs, projects } from "../../constants";
 
-const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
+const useFilterProjects: HookFunction = (DOM, dataId: unknown | number) => {
     const updateProjects = (filter?: boolean) => {
         const container = DOM.querySelector('#projects-container') as HTMLElement;
         if (!container) return;
@@ -14,7 +15,7 @@ const useFilterProjects = (DOM: HTMLElement, dataId: number) => {
                 : projects;
 
         filtered.forEach(project => {
-            container.innerHTML += ProjectCard(project, dataId);
+            container.innerHTML += ProjectCard(project, dataId as number);
         });
     };
 

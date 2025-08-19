@@ -1,8 +1,9 @@
+import { HookFunction, Sections } from "@/lib/types"
 import { AboutMe, Contact, Hero, Introduction, Portfolio } from "@/pages/Home/Sections"
 import { useTSCollection } from "@devwareng/vanilla-ts"
 
-const useHomeComponents = (DOM: HTMLElement) => {
-    const sections = [
+const useHomeComponents: HookFunction = (DOM) => {
+    const sections: Sections = [
         "hero-section",
         "introduction-section",
         "about-me-section",
@@ -10,7 +11,7 @@ const useHomeComponents = (DOM: HTMLElement) => {
         "contact-form",
     ]
 
-    const components = [
+    const components: Function[] = [
         Hero,
         Introduction,
         AboutMe,

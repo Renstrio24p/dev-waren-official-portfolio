@@ -1,7 +1,7 @@
+import { HookFunction } from "@/lib/types";
 import { useTSEvent } from "@devwareng/vanilla-ts";
 
-const useIntroductionSettings = (DOM: HTMLElement): void => {
-    // Add scroll animation with IntersectionObserver
+const useIntroductionSettings: HookFunction = (DOM) => {
     const section = DOM.querySelector('#introduction-section');
     if (section) {
         const observer = new IntersectionObserver(

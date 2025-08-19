@@ -1,5 +1,6 @@
+import { TestimonialType } from "../types"
 
-const testimonials = [
+const testimonials: TestimonialType[] = [
     {
         name: "Ian Gab",
         school: "Ateneo University Student",

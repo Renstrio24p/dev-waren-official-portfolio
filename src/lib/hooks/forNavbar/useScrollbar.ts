@@ -1,8 +1,8 @@
 // hooks/useScrollNavbar.ts
-import { ComponentFunction } from '@/lib/types/Functions';
+import { HookFunction } from '@/lib/types';
 import { animate, scroll } from 'motion';
 
-const useScrollNavbar: ComponentFunction = (navbar) => {
+const useScrollNavbar: HookFunction = (navbar) => {
     if (!navbar) return () => { };
 
     let isScrolled = true; // default to "scrolled" style

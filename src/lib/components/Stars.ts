@@ -3,7 +3,7 @@ import { html } from '@devwareng/vanilla-ts';
 import { mapper } from '../func';
 
 // rating: number between 0–5
-export function Stars(rating = 5) {
+export default function Stars(rating = 5) {
     const fullStars = Math.floor(rating);
     const emptyStars = 5 - fullStars;
 

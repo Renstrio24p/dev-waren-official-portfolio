@@ -1,9 +1,10 @@
 import { useTSAnchorMount, useTSCollection } from "@devwareng/vanilla-ts"
 import { Footer, Navbar } from "../../components"
 import { useVercelInsights } from "../vercel/useVercelInsights"
+import { HookFunction } from "@/lib/types"
 
 
-const useMainComponent = (isDOM: HTMLElement) => {
+const useMainComponent: HookFunction = (isDOM) => {
     const sections = ["nav-container", "footer-container"]
     const components = [Navbar, Footer]
 

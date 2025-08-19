@@ -1,23 +1,15 @@
 import { mapper } from "@/lib/func";
+import { Project, ProjectHookFunction } from "@/lib/types";
 import { html } from "@devwareng/vanilla-ts";
 
-type Project = {
-    title: string;
-    image: string;
-    stacks: string[];
-    url: string;
-    desc: string;
-    fullStack: boolean;
-    designed: boolean;
-};
+const useProjectCards: ProjectHookFunction = (project: Partial<Project>) => {
 
-const useProjectCards = (project: Partial<Project>): { projectList: string | undefined } => {
-
-    const projectList = mapper(project.stacks?.map((stack) => html`
-                    <span class="bg-white text-black text-xs px-2 py-1 rounded">
-                        ${stack}
-                    </span>
-            `))
+    const projectList = mapper(
+        project.stacks?.map((stack) => html`
+            <span class="bg-white text-black text-xs px-2 py-1 rounded">
+                ${stack}
+            </span>
+    `))
 
     return { projectList };
 

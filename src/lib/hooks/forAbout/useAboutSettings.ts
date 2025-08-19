@@ -1,4 +1,4 @@
-import { initMarqueeeSlider } from "../../utils";
+import { initMarqueeeSlider } from "@/lib/utils";
 import { useNavbarScroll } from "../forNavbar/useNavbarScroll";
 import { useAboutComponents } from "./useAboutComponent";
 
@@ -11,7 +11,6 @@ const useAboutSettings = (DOM: HTMLElement) => {
     initMarqueeeSlider("marquee");
     handleScroll();
     useAboutComponents(DOM);
-
 
 };
 

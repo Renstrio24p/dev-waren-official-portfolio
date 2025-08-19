@@ -1,4 +1,6 @@
-const details = [
+import { Details } from "@/lib/types"
+
+const details: Details[] = [
     {
         title: "Design",
         image: "pen.png",

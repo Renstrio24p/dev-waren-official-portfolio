@@ -1,29 +1,14 @@
 import { useSubmitForm } from '@/lib/hooks';
 import { contactStore } from '@/store';
 import { contactSchema } from '../../validators';
+import { ContactErrors, ContactHookFunction, Contacts, HandlerSubmit } from '@/lib/types';
 
-type ContactErrors = {
-    name?: string;
-    email?: string;
-    subject?: string;
-    message?: string;
-};
-
-type Contacts = {
-    name: string;
-    email: string;
-    subject?: string;
-    message: string;
-}
-
-
-
-export function useContactForm(DOM: HTMLElement) {
+const useContactForm: ContactHookFunction = (DOM) => {
     const { onSubmit } = useSubmitForm();
     let errors = contactStore.getState().errors;
 
 
-    const handleSubmit = async (event: Event) => {
+    const handleSubmit: HandlerSubmit = async (event) => {
         event.preventDefault();
 
         const form = event.currentTarget as HTMLFormElement;
@@ -81,3 +66,5 @@ export function useContactForm(DOM: HTMLElement) {
 
     return { errors, handleSubmit, requestAnimation };
 }
+
+export { useContactForm }
