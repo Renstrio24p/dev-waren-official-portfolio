@@ -2,9 +2,8 @@ import { useTSAnchorMount, useTSCollection } from "@devwareng/vanilla-ts"
 import { Footer, Navbar } from "../../components"
 import { useVercelInsights } from "../vercel/useVercelInsights"
 import DOMPurify from 'dompurify';
-import { ComponentFunction } from "@/lib/types/Functions";
 
-const useMainComponent: ComponentFunction = (isDOM) => {
+const useMainComponent = (isDOM: HTMLElement) => {
 
     const sections = [
         "nav-container",

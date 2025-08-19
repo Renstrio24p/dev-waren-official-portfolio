@@ -27,7 +27,7 @@ export default function Start(DOM?: HTMLElement) {
         `
     );
 
-    useMainComponent(isDOM!, title);
+    useMainComponent(isDOM!);
     useTSComponent("router", isDOM!, Router, title);
 
     return ui
