@@ -4,18 +4,8 @@ import "boxicons/css/boxicons.min.css"
 import { html, useTSComponent, useTSElements, useTSMetaData } from '@devwareng/vanilla-ts';
 import { useMainComponent, useSSRHydration } from "./lib/hooks";
 import { Router } from "./routes"
-import DOMPurify from "dompurify"
 
 export default function Start(DOM?: HTMLElement) {
-
-
-    // Register TrustedHTML policy once
-    if (typeof window !== "undefined" && window.trustedTypes && !window.trustedTypes.getPolicy!("dompurify")) {
-        window.trustedTypes.createPolicy!("dompurify", {
-            createHTML: (dirty: string) =>
-                DOMPurify.sanitize(dirty, { RETURN_TRUSTED_TYPE: true }) as any,
-        });
-    }
 
     const { isDOM } = useSSRHydration(DOM);
     if (!isDOM) return null;
