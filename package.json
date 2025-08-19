@@ -12,7 +12,7 @@
     "start": "node dist/server/server.js"
   },
   "dependencies": {
-    "@devwareng/vanilla-ts": "^1.2.60",
+    "@devwareng/vanilla-ts": "^1.2.63",
     "@tailwindcss/vite": "^4.1.11",
     "@types/jsdom": "^21.1.7",
     "@vercel/analytics": "^1.5.0",
