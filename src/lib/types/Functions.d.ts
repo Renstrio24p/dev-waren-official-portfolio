@@ -17,3 +17,5 @@ export type ContactHookFunction = (DOM: HTMLElement) => { errors: ContactErrors,
 export type ProjectHookFunction = (project: Partial<Project>) => { projectList: string | undefined }
 
 export type ShowContact = (DOM: HTMLElement) => { handleShowContact: Function };
+
+export type HydrationFunction = (DOM: HTMLElement) => { isDOM: HTMLElement | null };

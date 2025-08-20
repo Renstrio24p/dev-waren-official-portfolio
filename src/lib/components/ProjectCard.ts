@@ -1,15 +1,7 @@
-import 'animate.css';
 import { html } from '@devwareng/vanilla-ts'
-import { useProjectCards } from '../hooks';
+import { useProjectCards } from '@/lib/hooks';
+import { Project } from '@/lib/types';
 
-type Project = {
-    title: string,
-    image: string,
-    stacks: string[],
-    url: `https://${string}`,
-    desc: string,
-    fullStack: boolean
-}
 
 export default function ProjectCard(
     project: Partial<Project>,

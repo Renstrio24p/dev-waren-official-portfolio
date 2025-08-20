@@ -1,12 +1,11 @@
-import { HookFunction } from "@/lib/types";
+import { HydrationFunction } from "@/lib/types";
 
-const useSSRHydration: HookFunction = (DOM) => {
+const useSSRHydration: HydrationFunction = (DOM) => {
     if (typeof window === "undefined") {
         return { isDOM: null };
     }
 
     const isDOM = DOM || document.body;
-
 
     return { isDOM };
 };
