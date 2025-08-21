@@ -3,7 +3,7 @@ import { HookFunction } from '@/lib/types';
 import { animate, scroll } from 'motion';
 
 const useScrollNavbar: HookFunction = (navbar) => {
-    if (!navbar) return () => { };
+    if (!navbar) return;
 
     let isScrolled = true; // default to "scrolled" style
 

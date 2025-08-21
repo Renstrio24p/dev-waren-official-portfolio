@@ -19,7 +19,7 @@ export const useSidebarToggle: SidebarFunction = (
     };
 
     // Menu button click → toggle sidebar
-    useTSEvent(menuBtnId, 'click', (e) => {
+    useTSEvent(`${menuBtnId}`, 'click', (e) => {
         e.stopPropagation();
         if (sidebar?.classList.contains('-translate-x-full')) {
             showSidebar();
@@ -29,12 +29,12 @@ export const useSidebarToggle: SidebarFunction = (
     });
 
     // Click outside → close sidebar
-    document.addEventListener('click', (e) => {
+    useTSEvent(document, "click", (e) => {
         const target = e.target as HTMLElement;
         if (!sidebar?.contains(target) && target !== menuBtn && !menuBtn.contains(target)) {
             hideSidebar();
         }
-    });
+    })
 
     return { showSidebar, hideSidebar };
 };
