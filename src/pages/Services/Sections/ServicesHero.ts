@@ -5,8 +5,8 @@ export default function ServicesHero(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="py-16 px-4 text-center space-y-4 min-h-[25em] grid place-items-center">
-            <div>
+        <section class="py-16 px-4 text-center min-h-[25em] grid place-items-center">
+            <div class="space-y-4">
                 <h1
                     class="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 animate__animated animate__fadeIn duration-300">
                     Crafting Software with Distinction
