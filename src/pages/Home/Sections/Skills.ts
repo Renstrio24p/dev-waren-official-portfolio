@@ -19,21 +19,21 @@ export default function Skills(DOM: HTMLElement) {
                     I'm using the following tools:
                 </p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 py-16 gap-y-8">
-                    ${filteredTechstacks.map((techstack) => Stacks(DOM, techstack)).join('')}
+                    ${filteredTechstacks.map((techstack) => Stacks(techstack)).join('')}
                 </div>
         
                 <p class="tracking-widest font-semibold text-left uppercase text-2xl">
                     Learnings
                 </p>
                 <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-16 gap-y-8">
-                    ${backendTechstacks.map((techstack) => Stacks(DOM, techstack)).join('')}
+                    ${backendTechstacks.map((techstack) => Stacks(techstack)).join('')}
                 </div>
         
                 <p class="tracking-widest font-semibold text-left uppercase text-lg md:text-xl lg:text-2xl">
                     Other Skills
                 </p>
                 <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-16 gap-y-8">
-                    ${languages.map((techstack) => Stacks(DOM, techstack)).join('')}
+                    ${languages.map((techstack) => Stacks(techstack)).join('')}
                 </div>
             </div>
         </section>

@@ -1,17 +1,18 @@
 import { Info } from '@/lib/components';
 import { details } from '@/lib/constants';
-import { html, useTSElements } from '@devwareng/vanilla-ts'
+import { mapper } from '@/lib/func';
+import { html, useTSElements } from '@devwareng/vanilla-ts';
 
 export default function Details(DOM: HTMLElement) {
-
 
     const ui = useTSElements(
         DOM,
         html`
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 py-16 gap-4">
-        ${details.map((detail) => Info(DOM, detail))}
-    </div>
-`
+            <div class="grid md:grid-cols-2 py-16 gap-4">
+                ${mapper(details.map(detail => Info(detail)))}
+            </div>
+        `
     );
-    return ui
+
+    return ui;
 }

@@ -1,15 +1,13 @@
-import { html, useTSElements } from '@devwareng/vanilla-ts';
+import { html } from '@devwareng/vanilla-ts';
 import { useUniqueId } from '../hooks';
 
 
-export default function Pillar(DOM: HTMLElement, className: string = 'bg-black') {
+export default function Pillar(className: string = 'bg-black') {
 
     const { dataId } = useUniqueId();
 
 
-    const ui = useTSElements(
-        DOM,
-        html`
+    return html`
         <div data-id="${dataId}" class="flex items-center gap-1">
             <div class='w-10 ${className} h-[2px]'></div>
             <div class="flex items-center font-semibold ${className === 'bg-black' ? 'text-black' : 'text-white'}">
@@ -20,7 +18,5 @@ export default function Pillar(DOM: HTMLElement, className: string = 'bg-black')
             <div class='w-10 ${className} h-[2px]'></div>
         </div>
         `
-    );
 
-    return ui;
 }
