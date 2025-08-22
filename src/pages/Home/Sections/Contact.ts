@@ -21,7 +21,7 @@ export default function Contact(DOM: HTMLElement) {
                     Shall we work together? Pop me a message, and I’ll be in touch before you can say “cuppa tea.”
                 </p>
         
-                ${Pillar(DOM)}
+                ${Pillar()}
         
                 <form class="grid gap-4 w-full md:w-1/2 animate__animated animate__fadeInUp animate__delay-1s px-4" id="send">
                     <div>
@@ -56,7 +56,7 @@ export default function Contact(DOM: HTMLElement) {
                     </div>
                 </form>
         
-                ${Pillar(DOM)}
+                ${Pillar()}
             </div>
         </section>
         `

@@ -11,7 +11,7 @@ export default function Footer(DOM: HTMLElement) {
         html`
         <footer data-id="${dataId}" class="bg-[#1A1A1A] text-white">
             <div class="max-w-screen-2xl mx-auto py-16 flex flex-col gap-8 items-center ">
-                ${Pillar(DOM, "bg-white text-white")}
+                ${Pillar("bg-white text-white")}
                 <div class="italic text-center">
                     <p>"First, solve the problem. Then, write the code." </p>
                     <p>- John Johnson</p>
@@ -29,7 +29,7 @@ export default function Footer(DOM: HTMLElement) {
                     <i class='bx bx-chevrons-up text-4xl animate-bounce delay-75'></i>
                     <p>Back to top</p>
                 </button>
-                ${Pillar(DOM, "bg-white text-white")}
+                ${Pillar("bg-white text-white")}
             </div>
         </footer>
         `
