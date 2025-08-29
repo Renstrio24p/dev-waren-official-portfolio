@@ -17,7 +17,7 @@ export default function Navbar(DOM: HTMLElement) {
                     <img src="/devwaren.webp" alt="logo" class="h-10 w-auto animate-pulse" />
                     <h1 class="text-xl font-semibold text-gray-600" id="name-logo">Dev Waren &trade;</h1>
                 </div>
-                <nav class="hidden md:flex items-center gap-6">
+                <nav class="hidden lg:flex items-center gap-6">
                     <ul class="flex items-center gap-x-16 font-medium" id="navbar-links">
                         ${links}
                     </ul>
