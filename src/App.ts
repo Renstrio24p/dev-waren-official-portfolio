@@ -2,9 +2,8 @@
 import "./index.css"
 import "animate.css"
 import "boxicons/css/boxicons.min.css"
-import { html, useTSComponent, useTSElements, useTSMetaData } from '@devwareng/vanilla-ts';
+import { html, useTSElements, useTSMetaData } from '@devwareng/vanilla-ts';
 import { useMainComponent, useSSRHydration } from "./lib/hooks";
-import { Router } from "./routes"
 
 export default function Start(DOM?: HTMLElement) {
 
@@ -28,8 +27,7 @@ export default function Start(DOM?: HTMLElement) {
         `
     );
 
-    useMainComponent(isDOM!);
-    useTSComponent("router", isDOM!, Router, title);
+    useMainComponent(isDOM!, title);
 
     return ui
 }

@@ -9,8 +9,8 @@ const useAboutSettings = (DOM: HTMLElement) => {
 
     window.addEventListener("scroll", handleScroll);
     initMarqueeeSlider("marquee");
-    handleScroll();
-    useAboutComponents(DOM);
+
+    return [handleScroll, useAboutComponents(DOM)]
 
 };
 

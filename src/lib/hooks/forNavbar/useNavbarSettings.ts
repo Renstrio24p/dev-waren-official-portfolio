@@ -15,13 +15,15 @@ const useNavbarSettings: HookFunction = (DOM) => {
     Sidebar(sidebarContainer as HTMLElement, () => sidebarToggle?.hideSidebar());
 
     // Sidebar logic via hook
-    useSidebarToggle('sidebar', 'menu-btn');
+    const sidebarToggler = useSidebarToggle('sidebar', 'menu-btn');
 
     // Logo click → scroll to top
-    useTSEvent('logo-app', 'click', () => {
+    const events = useTSEvent('logo-app', 'click', () => {
         if (window.location.pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
         else window.location.href = "/";
     });
+
+    return [sidebarToggler, events]
 
 };
 

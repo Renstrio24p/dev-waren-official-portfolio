@@ -4,19 +4,17 @@ import { useTSCollection } from "@devwareng/vanilla-ts";
 
 const useServicesComponent: HookFunction = (DOM) => {
 
-    const sections = [
-        "services-hero",
-        "services-divider",
-        "services-list"
-    ]
+    enum IDs {
+        HERO = "services-hero",
+        DIVIDER = "services-divider",
+        LIST = "services-list"
+    }
 
-    const components = [
-        ServicesHero,
-        ImageDivider,
-        ListofServices
-    ]
+    const sections = [IDs.HERO, IDs.DIVIDER, IDs.LIST]
 
-    useTSCollection(sections, DOM, components)
+    const components = [ServicesHero, ImageDivider, ListofServices]
+
+    return useTSCollection(sections, DOM, components)
 
 };
 

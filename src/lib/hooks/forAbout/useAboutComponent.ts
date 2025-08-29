@@ -4,14 +4,24 @@ import { useTSCollection } from "@devwareng/vanilla-ts"
 
 const useAboutComponents = (DOM: HTMLElement) => {
 
+    enum IDs {
+        HERO = "about-hero",
+        CAROUSEL = "carousel",
+        PROFESSIONAL_LIFE = "professional-life",
+        PERSONAL_LIFE = "personal-life",
+        CLOSING_NOTE = "closing-note",
+        WORKING_GALLERY = "working-gallery",
+        TESTIMONIALS = "testimonials"
+    }
+
     const sections: Sections = [
-        "about-hero",
-        "carousel",
-        "professional-life",
-        "personal-life",
-        "closing-note",
-        "working-gallery",
-        "testimonials"
+        IDs.HERO,
+        IDs.CAROUSEL,
+        IDs.PROFESSIONAL_LIFE,
+        IDs.PERSONAL_LIFE,
+        IDs.CLOSING_NOTE,
+        IDs.WORKING_GALLERY,
+        IDs.TESTIMONIALS
     ]
 
     const components: Function[] = [
@@ -24,7 +34,7 @@ const useAboutComponents = (DOM: HTMLElement) => {
         Testimonials
     ]
 
-    useTSCollection(sections, DOM, components)
+    return useTSCollection(sections, DOM, components)
 
 }
 
