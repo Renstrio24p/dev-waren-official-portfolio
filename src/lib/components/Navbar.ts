@@ -27,7 +27,7 @@ export default function Navbar(DOM: HTMLElement) {
                         Contact Me
                     </a>
                 </nav>
-                <button class="block md:hidden text-black cursor-pointer" id="menu-btn" aria-label="menu">
+                <button class="block lg:hidden text-black cursor-pointer" id="menu-btn" aria-label="menu">
                     <i class="bx bx-menu text-4xl"></i>
                 </button>
             </div>
@@ -35,8 +35,6 @@ export default function Navbar(DOM: HTMLElement) {
         <div id="sidebar-container"></div>
     `
     );
-
-
 
     // bottom hook 
     useNavbarHighlighter(DOM, "#navbar-links a")
