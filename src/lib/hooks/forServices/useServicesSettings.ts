@@ -9,5 +9,4 @@ const useServicesSettings = (DOM: HTMLElement): void => {
     useServicesComponent(DOM);
 
 };
-
 export { useServicesSettings };

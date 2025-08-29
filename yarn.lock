@@ -75,12 +75,31 @@
   resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-3.0.4.tgz#333fedabc3fd1a8e5d0100013731cf19e6a8c5d3"
   integrity sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==
 
-"@devwareng/vanilla-ts@^1.2.77":
-  version "1.2.77"
-  resolved "https://registry.yarnpkg.com/@devwareng/vanilla-ts/-/vanilla-ts-1.2.77.tgz#b2344fbf65f3b16737fbf680ab2dba4255305fa2"
-  integrity sha512-BKL7D9htlyV10fTGXb6FYAIOfBpknyo6fvFdCEv1YxkNoZU7bTxbKgbUtRPDEgTJ0NQcyLUAA3WrlodKIEIUmQ==
+"@devwareng/vanilla-ts@^1.2.118":
+  version "1.2.118"
+  resolved "https://registry.yarnpkg.com/@devwareng/vanilla-ts/-/vanilla-ts-1.2.118.tgz#f45daa87e0e1e8ed0262db8bbb8f2deac9df74a8"
+  integrity sha512-fqIZ40rI+sLXL9kN5g6DyTOVlTrOgmeg/6NEpAtoCtktvZI+8OhLcG6qHegxLL6YvYiiBSqGvpLzKg3Ncte3Fg==
   dependencies:
+    "@types/fs-extra" "^11.0.4"
+    brython "^3.13.2"
     dompurify "^3.2.6"
+    fs-extra "^11.3.1"
+    js-cookie "^3.0.5"
+    jwt-decode "^4.0.0"
+    lodash-es "^4.17.21"
+    xss "^1.0.15"
+    zustand "^5.0.7"
+
+"@devwareng/vanilla-ts@^1.2.120":
+  version "1.2.120"
+  resolved "https://registry.yarnpkg.com/@devwareng/vanilla-ts/-/vanilla-ts-1.2.120.tgz#b9c1d7a09789736e5d4686c3400ef81a35e1e1cd"
+  integrity sha512-hnL3BTYAuOVx0l3V6qQyqrcorBSvrJWLya4Jh3Ab9hsPw1b9vROVU21KGrnOMV7BJdSayDPU1iGDkG8zjqVmhQ==
+  dependencies:
+    "@devwareng/vanilla-ts" "^1.2.118"
+    "@types/fs-extra" "^11.0.4"
+    brython "^3.13.2"
+    dompurify "^3.2.6"
+    fs-extra "^11.3.1"
     js-cookie "^3.0.5"
     jwt-decode "^4.0.0"
     lodash-es "^4.17.21"
@@ -585,6 +604,14 @@
     "@types/express-serve-static-core" "^5.0.0"
     "@types/serve-static" "*"
 
+"@types/fs-extra@^11.0.4":
+  version "11.0.4"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-11.0.4.tgz#e16a863bb8843fba8c5004362b5a73e17becca45"
+  integrity sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==
+  dependencies:
+    "@types/jsonfile" "*"
+    "@types/node" "*"
+
 "@types/http-errors@*":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-2.0.5.tgz#5b749ab2b16ba113423feb1a64a95dcd30398472"
@@ -598,6 +625,13 @@
     "@types/node" "*"
     "@types/tough-cookie" "*"
     parse5 "^7.0.0"
+
+"@types/jsonfile@*":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@types/jsonfile/-/jsonfile-6.1.4.tgz#614afec1a1164e7d670b4a7ad64df3e7beb7b702"
+  integrity sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==
+  dependencies:
+    "@types/node" "*"
 
 "@types/lodash@^4.17.20":
   version "4.17.20"
@@ -743,6 +777,11 @@ boxicons@^2.1.4:
     react-dom "^16.0.0"
     react-interactive "^0.8.1"
     react-router-dom "^4.2.2"
+
+brython@^3.13.2:
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/brython/-/brython-3.13.2.tgz#d09fef2f02771ee01a918edbce7abf59f7a9884f"
+  integrity sha512-FlBmjjtQ2FH3MKRZl6JG9ARj6v6/IysHgnT6tParCKkuJOPv5sRA4+a/pxGjIJEVuzSmessfxYEiWyOfz+4f/Q==
 
 bytes@3.1.2, bytes@^3.1.2:
   version "3.1.2"
@@ -1135,6 +1174,15 @@ fresh@^2.0.0:
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-2.0.0.tgz#8dd7df6a1b3a1b3a5cf186c05a5dd267622635a4"
   integrity sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==
 
+fs-extra@^11.3.1:
+  version "11.3.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.1.tgz#ba7a1f97a85f94c6db2e52ff69570db3671d5a74"
+  integrity sha512-eXvGGwZ5CL17ZSwHWd3bbgk7UUpF6IFHtP57NYYakPvHOs8GDgDe5KJI36jIJzDkJ6eJjuzRA8eBQb6SkKue0g==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
@@ -1174,7 +1222,7 @@ gopd@^1.2.0:
   resolved "https://registry.yarnpkg.com/gopd/-/gopd-1.2.0.tgz#89f56b8217bdbc8802bd299df6d7f1081d7e51a1"
   integrity sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==
 
-graceful-fs@^4.2.4:
+graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
   version "4.2.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
@@ -1341,6 +1389,15 @@ jsdom@^26.1.0:
     whatwg-url "^14.1.1"
     ws "^8.18.0"
     xml-name-validator "^5.0.0"
+
+jsonfile@^6.0.1:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.2.0.tgz#7c265bd1b65de6977478300087c99f1c84383f62"
+  integrity sha512-FGuPw30AdOIUTRMC2OMRtQV+jkVj2cfPqSeWXv1NEAJ1qZ5zb1X6z1mFhbfOB/iy3ssJCD+3KuZ8r8C3uVFlAg==
+  dependencies:
+    universalify "^2.0.0"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
 
 jwt-decode@^4.0.0:
   version "4.0.0"
@@ -2092,6 +2149,11 @@ unicorn-magic@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.3.0.tgz#4efd45c85a69e0dd576d25532fbfa22aa5c8a104"
   integrity sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==
+
+universalify@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.1.tgz#168efc2180964e6386d061e094df61afe239b18d"
+  integrity sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==
 
 unpipe@1.0.0:
   version "1.0.0"

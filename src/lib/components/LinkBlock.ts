@@ -8,7 +8,7 @@ type Links = {
     link: string
 }
 
-export default function LinkBlock(links: Links) {
+export default function LinkBlock(links: Partial<Links>) {
 
     const { dataId } = useUniqueId();
 
