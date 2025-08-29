@@ -9,16 +9,18 @@ const useNavbarHighlighter = (
 
     if (!links.length) return;
 
+    // Highlight the first link by default
     links[0].classList.add(...activeClassList);
 
+    // Add smooth highlight switching
     return useTSElementEach(links, ["click"], (el) => {
-        links.forEach(link => {
-            link.classList.remove(...activeClassList)
-        });
+        links.forEach((link) => link.classList.remove(...activeClassList));
         el.classList.add(...activeClassList);
 
-        links[0].addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }))
-
+        // Smooth scroll only if first link is clicked
+        if (el === links[0]) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
     });
 };
 
