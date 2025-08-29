@@ -1,6 +1,6 @@
 import { html, useTSElements } from '@devwareng/vanilla-ts';
 import { useNavbarLinks, useNavbarSettings } from '@/lib/hooks';
-
+import { useNavbarHighlighter } from '../hooks';
 
 export default function Navbar(DOM: HTMLElement) {
 
@@ -18,7 +18,7 @@ export default function Navbar(DOM: HTMLElement) {
                     <h1 class="text-xl font-semibold text-gray-600" id="name-logo">Dev Waren &trade;</h1>
                 </div>
                 <nav class="hidden md:flex items-center gap-6">
-                    <ul class="flex items-center gap-x-16 font-medium">
+                    <ul class="flex items-center gap-x-16 font-medium" id="navbar-links">
                         ${links}
                     </ul>
                     <a href="#contact"
@@ -36,7 +36,10 @@ export default function Navbar(DOM: HTMLElement) {
     `
     );
 
+
+
     // bottom hook 
+    useNavbarHighlighter(DOM, "#navbar-links a")
     useNavbarSettings(DOM);
 
     return ui;

@@ -4,29 +4,24 @@ import { animate } from "motion";
 let isScrolled = false;
 
 const useNavbarScroll = () => {
-    const nameTitle = useTSSelect("#name-logo") as HTMLElement | null;
-    const navbar = useTSSelect("#navbar") as HTMLElement | null;
+    const nameTitle = useTSSelect<HTMLElement>("#name-logo");
+    const navbar = useTSSelect<HTMLElement>("#navbar");
 
     if (!nameTitle || !navbar) return;
 
     const handleScroll = () => {
         const shouldBeScrolled = window.scrollY > 20;
 
-        // Update title color
-        if (window.scrollY <= 0) {
-            nameTitle.classList.add("text-white");
-            nameTitle.classList.remove("text-black");
-        } else {
-            nameTitle.classList.remove("text-white");
-            nameTitle.classList.add("text-black");
-        }
+        // Title color toggle
+        nameTitle.classList.toggle("text-white", window.scrollY <= 0);
+        nameTitle.classList.toggle("text-black", window.scrollY > 0);
 
-        // Animate navbar background
+        // Animate navbar only when state changes
         if (shouldBeScrolled !== isScrolled) {
             isScrolled = shouldBeScrolled;
             animate(
                 navbar,
-                isScrolled
+                shouldBeScrolled
                     ? {
                         backgroundColor: "rgba(255,255,255,1)",
                         boxShadow: "0 4px 6px rgba(0,0,0,0.1)",

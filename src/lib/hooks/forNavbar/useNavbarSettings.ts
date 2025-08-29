@@ -23,6 +23,7 @@ const useNavbarSettings: HookFunction = (DOM) => {
         else window.location.href = "/";
     });
 
+
     return [sidebarToggler, events]
 
 };
